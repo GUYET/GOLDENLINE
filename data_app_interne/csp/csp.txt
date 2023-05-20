@@ -1,0 +1,11 @@
+agriculteur
+artisan
+cadre
+chefs d'entreprise 
+commerçant
+employé
+fonctionnaire
+libérale
+ouvrier
+retraité
+sans activité
