@@ -2,12 +2,16 @@
 
 {% block body %}
 
-<h1>Visualisation des statistiques </h1>
+<h1>Visualisation des statistiques</h1>
 
 <ul>
-
-    {{requete}}
-
+    {% for requete in requetes_collecte %}
+    <li>{{ requete.id }} - {{ requete.nb_collect_id }} - {{ requete.purchase_amount }} - {{ requete.product_category_name_id }} - {{ requete.csp_name_id }}</li>
+    {% endfor %}
+    
+    {% for requete in requetes_anonymisees %}
+    <li>{{ requete.id }} - {{ requete.child_number }} - {{ requete.csp_name_id }} - {{ requete.purchase_amount }} - {{ requete.purchase_date }} - {{ requete.nb_collect_id }}</li>
+    {% endfor %}
 </ul>
 
 {% endblock %}

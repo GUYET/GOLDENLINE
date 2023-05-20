@@ -19,7 +19,7 @@ class RequeteAnonymisees(models.Model):
     purchase_amount = models.TextField(
         blank=True, null=True
     )  # This field type is a guess.
-    purchase_date = models.DateTimeField(blank=True, null=True)
+    purchase_date = models.DateField(blank=True, null=True)
     nb_collect_id = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
