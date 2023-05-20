@@ -10,6 +10,7 @@ from django.db import models
 
 
 class RequeteAnonymisees(models.Model):
+    id = models.AutoField(primary_key=True)
     id_customer = models.BigIntegerField()
     child_number = models.IntegerField(blank=True, null=True)
     csp_name_id = models.TextField(
@@ -27,6 +28,7 @@ class RequeteAnonymisees(models.Model):
 
 
 class RequeteCollecte(models.Model):
+    id = models.AutoField(primary_key=True)
     nb_collect_id = models.BigIntegerField(blank=True, null=True)
     purchase_amount = models.TextField(
         blank=True, null=True

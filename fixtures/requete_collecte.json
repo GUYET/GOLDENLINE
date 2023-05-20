@@ -1,0 +1,52 @@
+[
+    {
+        "nb_collect_id": "142",
+        "purchase_amount": "50,00 €",
+        "product_category_name_id": "bébé"
+    },
+    {
+        "nb_collect_id": "146",
+        "purchase_amount": "125,00 €",
+        "product_category_name_id": "adolescent"
+    },
+    {
+        "nb_collect_id": "146",
+        "purchase_amount": "100,00 €",
+        "product_category_name_id": "bébé"
+    },
+    {
+        "nb_collect_id": "147",
+        "purchase_amount": "25,00 €",
+        "product_category_name_id": "bébé"
+    },
+    {
+        "nb_collect_id": "149",
+        "purchase_amount": "25,00 €",
+        "product_category_name_id": "adulte"
+    },
+    {
+        "nb_collect_id": "150",
+        "purchase_amount": "10,00 €",
+        "product_category_name_id": "enfant"
+    },
+    {
+        "nb_collect_id": "150",
+        "purchase_amount": "25,00 €",
+        "product_category_name_id": "adulte"
+    },
+    {
+        "nb_collect_id": "153",
+        "purchase_amount": "45,00 €",
+        "product_category_name_id": "bébé"
+    },
+    {
+        "nb_collect_id": "153",
+        "purchase_amount": "50,00 €",
+        "product_category_name_id": "adolescent"
+    },
+    {
+        "nb_collect_id": "155",
+        "purchase_amount": "150,00 €",
+        "product_category_name_id": "enfant"
+    }
+]

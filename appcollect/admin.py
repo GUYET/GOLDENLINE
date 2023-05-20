@@ -1,8 +1,26 @@
 from django.contrib import admin
-from .models import RequeteAnonymisees, RequeteCollecte
+from .models import RequeteCollecte
 
 
-# Register your models here.
+class RequeteCollecteAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
+    list_filter = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
+    search_fields = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
 
-admin.site.register(RequeteAnonymisees)
-admin.site.register(RequeteCollecte)
+
+admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
