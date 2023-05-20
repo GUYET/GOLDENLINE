@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "app_collect",
+    "appcollect",
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ if DEBUG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "app_collect",
+            "NAME": "appcollect",
             "USER": "postgres",
             "PASSWORD": "($*lsfLxhBuqLp$",
             "HOST": "127.0.0.1",
