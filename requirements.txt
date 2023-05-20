@@ -1,0 +1,12 @@
+Django
+djangorestframework
+flake8
+black
+pytest
+pytest-django
+gunicorn
+whitenoise
+psycopg2-binary
+dj-database-url
+bootstrap4
+pyspark
