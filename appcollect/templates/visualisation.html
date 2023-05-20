@@ -4,14 +4,61 @@
 
 <h1>Visualisation des statistiques</h1>
 
-<ul>
+<div>
+  <h2>Tableau Requete Collecte</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Collect ID</th>
+      <th>Montant achat</th>
+      <th>Catégorie produit</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for requete in requetes_collecte %}
-    <li>{{ requete.id }} - {{ requete.nb_collect_id }} - {{ requete.purchase_amount }} - {{ requete.product_category_name_id }} - {{ requete.csp_name_id }}</li>
+    <tr>
+      <td>{{ requete.id }}</td>
+      <td>{{ requete.nb_collect_id }}</td>
+      <td>{{ requete.purchase_amount }}</td>
+      <td>{{ requete.product_category_name_id }}</td>
+      <td>{{ requete.csp_name_id }}</td>
+    </tr>
     {% endfor %}
-    
+  </table>
+</div>
+
+
+<div>
+  <h2>Tableau Requete Anonymisees</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre enfant</th>
+       <th>Catégorie socioprofessionnelle</th>
+      <th>Montant achat</th>
+      <th>Date achat</th>
+      <th>Collect ID</th>
+     
+    </tr>
+  </thead>
     {% for requete in requetes_anonymisees %}
-    <li>{{ requete.id }} - {{ requete.child_number }} - {{ requete.csp_name_id }} - {{ requete.purchase_amount }} - {{ requete.purchase_date }} - {{ requete.nb_collect_id }}</li>
+    <tr>
+      <td>{{ requete.id }}</td>
+      <td>{{ requete.child_number }}</td>
+      <td>{{ requete.csp_name_id }}</td>
+      <td>{{ requete.purchase_amount }}</td>
+      <td>{{ requete.purchase_date }}</td>
+      <td>{{ requete.nb_collect_id }}</td>
+    </tr>
     {% endfor %}
-</ul>
+  </tbody>
+</table>
+  </table>
+</div>
+
+
+
 
 {% endblock %}
