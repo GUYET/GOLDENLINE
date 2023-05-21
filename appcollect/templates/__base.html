@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+   
     
     <title>{{ title }}</title>
+
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -19,9 +21,13 @@
 </head>
 
 <body>
-    {% block body %}
+    {%block scripts%}
+   {%endblock scripts%}
 
+    {% block body %}
     {% endblock %}
 </body>
+
+   
 
 </html>

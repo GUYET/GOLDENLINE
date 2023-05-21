@@ -4,9 +4,10 @@ flake8
 black
 pytest
 pytest-django
+pyspark
 gunicorn
 whitenoise
 psycopg2-binary
 dj-database-url
 bootstrap5
-pyspark
+django-chartjs

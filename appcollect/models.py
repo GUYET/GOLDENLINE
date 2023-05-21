@@ -40,3 +40,31 @@ class RequeteCollecte(models.Model):
     class Meta:
         managed = False
         db_table = "requete_collecte"
+
+
+class DataDepenseCsp(models.Model):
+    id = models.AutoField(primary_key=True)
+    csp_name_id = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+    purchase_amount = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = "depense_categorie_csp"
+
+
+class DataPanierMoyenCsp(models.Model):
+    id = models.AutoField(primary_key=True)
+    csp_name_id = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+    panier_moyen = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = "depense_panier_moyen_csp"

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "appcollect",
     "bootstrap5",
+    "chartjs",
 ]
 
 MIDDLEWARE = [

@@ -16,7 +16,6 @@
         <th>Collect ID</th>
         <th>Montant achat</th>
         <th>Catégorie produit</th>
-        
       </tr>
     </thead>
     <tbody>
@@ -26,7 +25,6 @@
         <td>{{ requete.nb_collect_id }}</td>
         <td>{{ requete.purchase_amount }}</td>
         <td>{{ requete.product_category_name_id }}</td>
-        
       </tr>
       {% endfor %}
     </tbody>
@@ -62,4 +60,93 @@
   </table>
 </div>
 
-{% endblock %}
+
+<div class="container">
+  <h2>Tableau dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Catégorie socioprofessionnelle</th>
+        <th>Montant achat</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for requete in depense_categorie_csp %}
+      <tr>
+        <td>{{ requete.id }}</td>
+        <td>{{ requete.csp_name_id }}</td>
+        <td>{{ requete.purchase_amount }}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<div class="container">
+  <h2>Tableau la dépense du panier moyen en fonction de la catégorie socioprofessionnelle</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Catégorie socioprofessionnelle</th>
+        <th>Montant achat</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for requete in depense_panier_moyen_csp %}
+      <tr>
+        <td>{{ requete.id }}</td>
+        <td>{{ requete.csp_name_id }}</td>
+        <td>{{ requete.panier_moyen }}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<div>
+  <canvas id="depensesParCategorieChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('depensesParCategorieChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            x: {
+                stacked: true
+            },
+            y: {
+                stacked: true
+            }
+        }
+    }
+});
+</script>
+
+
+
+
+
+{% endblock body %}
