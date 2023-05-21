@@ -25,3 +25,23 @@ def visualisation(request):
             "depense_panier_moyen_csp": depense_panier_moyen_csp,
         },
     )
+
+
+@require_GET
+def graphique(request):
+    depenses = DataDepenseCsp.objects.all()
+    labels = []
+    data = []
+
+    for depense in depenses:
+        labels.append(depense.label)
+        data.append(depense.data)
+
+    return render(
+        request,
+        template_name="visualisation.html",
+        context={
+            "labels": labels,
+            "data": data,
+        },
+    )
