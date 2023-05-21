@@ -8,5 +8,5 @@ gunicorn
 whitenoise
 psycopg2-binary
 dj-database-url
-bootstrap4
+bootstrap5
 pyspark

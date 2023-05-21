@@ -2,63 +2,64 @@
 
 {% block body %}
 
-<h1>Visualisation des statistiques</h1>
+<div class="container">
+    <h1>Visualisation des statistiques</h1>
+</div>
 
-<div>
-  <h2>Tableau Requete Collecte</h2>
-  <table class="table">
+<div class="container">
+  <h2>Tableau Requête Collecte</h2>
+  
+  <table class="table table-striped">
     <thead>
-    <tr>
-      <th>ID</th>
-      <th>Collect ID</th>
-      <th>Montant achat</th>
-      <th>Catégorie produit</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for requete in requetes_collecte %}
-    <tr>
-      <td>{{ requete.id }}</td>
-      <td>{{ requete.nb_collect_id }}</td>
-      <td>{{ requete.purchase_amount }}</td>
-      <td>{{ requete.product_category_name_id }}</td>
-      <td>{{ requete.csp_name_id }}</td>
-    </tr>
-    {% endfor %}
+      <tr>
+        <th>ID</th>
+        <th>Collect ID</th>
+        <th>Montant achat</th>
+        <th>Catégorie produit</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for requete in requetes_collecte %}
+      <tr>
+        <td>{{ requete.id }}</td>
+        <td>{{ requete.nb_collect_id }}</td>
+        <td>{{ requete.purchase_amount }}</td>
+        <td>{{ requete.product_category_name_id }}</td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
 
 
-<div>
-  <h2>Tableau Requete Anonymisees</h2>
-  <table class="table">
+<div class="container">
+  <h2>Tableau Requête Anonymisées</h2>
+  <table class="table table-striped">
     <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre enfant</th>
-       <th>Catégorie socioprofessionnelle</th>
-      <th>Montant achat</th>
-      <th>Date achat</th>
-      <th>Collect ID</th>
-     
-    </tr>
-  </thead>
-    {% for requete in requetes_anonymisees %}
-    <tr>
-      <td>{{ requete.id }}</td>
-      <td>{{ requete.child_number }}</td>
-      <td>{{ requete.csp_name_id }}</td>
-      <td>{{ requete.purchase_amount }}</td>
-      <td>{{ requete.purchase_date }}</td>
-      <td>{{ requete.nb_collect_id }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre enfant</th>
+        <th>Catégorie socioprofessionnelle</th>
+        <th>Montant achat</th>
+        <th>Date achat</th>
+        <th>Collect ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for requete in requetes_anonymisees %}
+      <tr>
+        <td>{{ requete.id }}</td>
+        <td>{{ requete.child_number }}</td>
+        <td>{{ requete.csp_name_id }}</td>
+        <td>{{ requete.purchase_amount }}</td>
+        <td>{{ requete.purchase_date }}</td>
+        <td>{{ requete.nb_collect_id }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
-
-
-
 
 {% endblock %}
