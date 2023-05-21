@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import RequeteCollecte, RequeteAnonymisees
+from .models import (
+    RequeteCollecte,
+    RequeteAnonymisees,
+    DataDepenseCsp,
+    DataPanierMoyenCsp,
+)
 
 
 class RequeteCollecteAdmin(admin.ModelAdmin):
@@ -53,5 +58,43 @@ class RequeteAnonymiseesAdmin(admin.ModelAdmin):
     )
 
 
+class DataDepenseCspAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "csp_name_id",
+        "purchase_amount",
+    )
+    list_filter = (
+        "id",
+        "csp_name_id",
+        "purchase_amount",
+    )
+    search_fields = (
+        "id",
+        "csp_name_id",
+        "purchase_amount",
+    )
+
+
+class DataPanierMoyenCspAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "csp_name_id",
+        "panier_moyen",
+    )
+    list_filter = (
+        "id",
+        "csp_name_id",
+        "panier_moyen",
+    )
+    search_fields = (
+        "id",
+        "csp_name_id",
+        "panier_moyen",
+    )
+
+
 admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
 admin.site.register(RequeteAnonymisees, RequeteAnonymiseesAdmin)
+admin.site.register(DataDepenseCsp, DataDepenseCspAdmin)
+admin.site.register(DataPanierMoyenCsp, DataPanierMoyenCspAdmin)
