@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-c-kmul0r7ryw07p#v1!glo7t83b5r_9^0dj3@saw0z-&!kce4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["goldenline-project.herokuapp.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "appcollect",
     "bootstrap5",
     "chartjs",
+    "whitenoise",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "myapp_goldenline.urls"
