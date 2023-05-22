@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+import pandas as pd
 
 from .models import (
     RequeteCollecte,
