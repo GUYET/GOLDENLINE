@@ -1,19 +1,18 @@
 {% extends '__base.html' %}
 
-
 {% block body %}
 
 <div class="container">
-    <h1>Visualisation des statistiques</h1>
+    <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 
 <div class="container">
   <h2>Tableau Requête Collecte</h2>
-  
-  <table class="table table-striped">
+ <div class="d-flex justify-content-rigth ">
+
+  <table id="table-requete-collecte" class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Collect ID</th>
         <th>Montant achat</th>
         <th>Catégorie produit</th>
@@ -22,7 +21,6 @@
     <tbody>
       {% for requete in requetes_collecte %}
       <tr>
-        <td>{{ requete.id }}</td>
         <td>{{ requete.nb_collect_id }}</td>
         <td>{{ requete.purchase_amount }}</td>
         <td>{{ requete.product_category_name_id }}</td>
@@ -31,11 +29,22 @@
     </tbody>
   </table>
 </div>
-
+</div>
+<script>
+$(document).ready(function() {
+  $('#table-requete-collecte').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      'csvHtml5', 'excelHtml5', 'pdfHtml5'
+    ]
+  });
+});
+</script>
 
 <div class="container">
   <h2>Tableau Requête Anonymisées</h2>
-  <table class="table table-striped">
+    <div class="d-flex justify-content-rigth">
+  <table id="table-requete-anonymisees" class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -61,13 +70,23 @@
   </table>
 </div>
 
+<script>
+$(document).ready(function() {
+  $('#table-requete-anonymisees').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      'csvHtml5', 'excelHtml5', 'pdfHtml5'
+    ]
+  });
+});
+</script>
 
 <div class="container">
   <h2>Tableau dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
-  <table class="table table-striped">
+    <div class="d-flex justify-content-rigth">
+  <table id="table-depense-categorie-csp" class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Catégorie socioprofessionnelle</th>
         <th>Montant achat</th>
       </tr>
@@ -75,23 +94,31 @@
     <tbody>
       {% for requete in depense_categorie_csp %}
       <tr>
-        <td>{{ requete.id }}</td>
         <td>{{ requete.csp_name_id }}</td>
         <td>{{ requete.purchase_amount }}</td>
-
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 
+<script>
+$(document).ready(function() {
+  $('#table-depense-categorie-csp').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      'csvHtml5', 'excelHtml5', 'pdfHtml5'
+    ]
+  });
+});
+</script>
 
 <div class="container">
-  <h2>Tableau la dépense du panier moyen en fonction de la catégorie socioprofessionnelle</h2>
-  <table class="table table-striped">
+  <h2>Dépense panier moyen en fonction de la catégorie socioprofessionnelle</h2>
+    <div class="d-flex justify-content-rigth">
+  <table id="table-depense-panier-moyen-csp" class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Catégorie socioprofessionnelle</th>
         <th>Montant achat</th>
       </tr>
@@ -99,70 +126,49 @@
     <tbody>
       {% for requete in depense_panier_moyen_csp %}
       <tr>
-        <td>{{ requete.id }}</td>
         <td>{{ requete.csp_name_id }}</td>
         <td>{{ requete.panier_moyen }}</td>
-
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
 
-<div class="container-fluid">
-    <div class='row justify-content-center'>
-
-        <div class = "col-md-10 col-lg-6">
-             <canvas id="depense_categorie_csp"></canvas>
-        </div>
-    </div>
+<div class="container">
+  <h2>Graphique - Dépense du panier moyen par catégorie socioprofessionnelle</h2>
+    
+  <canvas id="myChart"></canvas>
 </div>
 
 <script>
+  const ctx = document.getElementById('myChart');
 
-    var ctx = document.getElementById("depense_categorie_csp");
-    new Chart(ctx, {
-         type: 'line',
-         data: {labels:[1, 2, 3, 4, 5],
-            datasets: [{
-            label:"USD",
-            data:[1, 3, 2, 7, 4],
-            fill: false,
-            borderColor:'rgb(255,128,128)'
-            }]
-         }
-    });
-
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [
+        {% for requete in depense_panier_moyen_csp %}
+        "{{ requete.csp_name_id }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      datasets: [{
+        label: 'Montant achat',
+        data: [
+          {% for requete in depense_panier_moyen_csp %}
+          {{ requete.panier_moyen }}{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 </script>
-
-<div class="container-fluid">
-    <div class='row justify-content-center'>
-
-        <div class = "col-md-10 col-lg-6">
-             <canvas id="depense_categorie_csp"></canvas>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    var ctx = document.getElementById("depense_categorie_csp");
-    new Chart(ctx, {
-         type: 'line',
-         data: {labels:[1, 2, 3, 4, 5],
-            datasets: [{
-            label:"USD",
-            data:[1, 3, 2, 7, 4],
-            fill: false,
-            borderColor:'rgb(255,128,128)'
-            }]
-         }
-    });
-
-</script>
-
-
-
-
 
 {% endblock body %}

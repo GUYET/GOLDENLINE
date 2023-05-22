@@ -1,0 +1,18 @@
+[
+    {
+        "csp_name_id": "artisan",
+        "panier_moyen": "1965.00"
+    },
+    {
+        "csp_name_id": "cadre",
+        "panier_moyen": "1310.00"
+    },
+    {
+        "csp_name_id": "retraité",
+        "panier_moyen": "1310.00"
+    },
+    {
+        "csp_name_id": "employé",
+        "panier_moyen": "1965.00"
+    }
+]

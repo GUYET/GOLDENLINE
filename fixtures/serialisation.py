@@ -16,6 +16,6 @@ def csv_to_json(csv_path, json_path):
 
 # Serialisation
 
-csv_path = "fixtures/requete_collecte.csv"
-json_path = "fixtures/requete_collecte.json"
+csv_path = "fixtures/data-depense_panier_moyen_csp.csv"
+json_path = "fixtures/data-depense_panier_moyen_csp.json"
 csv_to_json(csv_path, json_path)

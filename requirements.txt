@@ -9,5 +9,4 @@ gunicorn
 whitenoise
 psycopg2-binary
 dj-database-url
-bootstrap5
-django-chartjs
+Django-chartjs
