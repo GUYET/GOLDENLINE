@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-import pandas as pd
+
 
 from .models import (
     RequeteCollecte,
@@ -27,14 +27,3 @@ def visualisation(request):
             "depense_panier_moyen_csp": depense_panier_moyen_csp,
         },
     )
-
-
-@login_required
-def graphiques(request):
-    depenses = DataDepenseCsp.objects.all().values()
-    df = pd.DataFrame(depenses)
-    df1 = df.purchase_amount.tolist()
-    df = ["csp_name_id"].tolist()
-    mydict = {"df": df, "df1": df1}
-
-    return render(request, template_name="visualisation.html", context=mydict)
