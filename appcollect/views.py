@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
+from django.contrib.auth.decorators import login_required
+
 from .models import (
     RequeteCollecte,
     RequeteAnonymisees,
     DataDepenseCsp,
     DataPanierMoyenCsp,
 )
-import matplotlib.pyplot as plt
 
 
-@require_GET
+@login_required
 def visualisation(request):
     requetes_collecte = RequeteCollecte.objects.all()
     requetes_anonymisees = RequeteAnonymisees.objects.all()
@@ -28,7 +29,7 @@ def visualisation(request):
     )
 
 
-@require_GET
+@login_required
 def graphiques(request):
     depenses = DataDepenseCsp.objects.all().values()
     df = pd.DataFrame(depenses)
