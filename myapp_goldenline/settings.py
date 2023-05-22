@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "appcollect",
-    "bootstrap5",
     "chartjs",
     "whitenoise",
 ]
