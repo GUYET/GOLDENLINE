@@ -1,8 +1,8 @@
 from .settings import *
 import dj_database_url
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 LLOWED_HOSTS = ["goldenline-project.herokuapp.com"]
 
 
