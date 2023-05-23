@@ -83,12 +83,12 @@ WSGI_APPLICATION = "myapp_goldenline.wsgi.application"
 if DEBUG:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
+            "ENGINE": "django.db.backends.postrgres.sql",
             "NAME": BASE_DIR / "db.sqlite3",
         },
         "test": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "dbtest.sqlite3",
+            "NAME": BASE_DIR / "db.postrgres.sql",
         },
     }
 else:
