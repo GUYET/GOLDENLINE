@@ -1,4 +1,4 @@
-Projet
+Projet :
 
 L’entreprise GoldenLine est spécialisée dans les vêtements de grande surface avec une estimation de 3 millions de clients.
 
