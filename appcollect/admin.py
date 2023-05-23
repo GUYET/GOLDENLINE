@@ -4,7 +4,6 @@ from .models import (
     RequeteAnonymisees,
     DataDepenseCsp,
     DataPanierMoyenCsp,
-    Editors,
 )
 
 
@@ -99,4 +98,3 @@ admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
 admin.site.register(RequeteAnonymisees, RequeteAnonymiseesAdmin)
 admin.site.register(DataDepenseCsp, DataDepenseCspAdmin)
 admin.site.register(DataPanierMoyenCsp, DataPanierMoyenCspAdmin)
-admin.site.register(Editors)
