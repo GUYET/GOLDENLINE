@@ -7,5 +7,4 @@ pyspark
 gunicorn
 whitenoise
 psycopg2-binary
-dj-database-url
 Django-chartjs
