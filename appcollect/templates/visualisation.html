@@ -2,15 +2,16 @@
 
 {% block body %}
 
+
 <div class="container">
     <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 
 <div class="container">
-  <h2>Tableau Requête Collecte</h2>
+  <h2>Tableau - Données Collecte</h2>
  <div class="d-flex justify-content-rigth ">
-
-  <table id="table-requete-collecte" class="table table-striped">
+ <table id="table-depense-panier-moyen-csp" class="table table-striped">
+  
     <thead>
       <tr>
         <th>Collect ID</th>
@@ -30,9 +31,10 @@
   </table>
 </div>
 </div>
+
 <script>
 $(document).ready(function() {
-  $('#table-requete-collecte').DataTable({
+  $('#table-depense-panier-moyen-csp').DataTable({
     dom: 'Bfrtip',
     buttons: [
       'csvHtml5', 'excelHtml5', 'pdfHtml5'
@@ -42,11 +44,11 @@ $(document).ready(function() {
 </script>
 
 <div class="container">
-  <h2>Tableau Requête Anonymisées</h2>
+  <h2>Tableau - Données Anonymisées</h2>
 </div>
 
   <div class="d-flex justify-content-rigth">
-  <table id="table-requete-anonymisees" class="table table-striped">
+
     <thead>
       <tr>
         <th>ID</th>
@@ -72,23 +74,15 @@ $(document).ready(function() {
   </table>
 </div>
 
-<script>
-$(document).ready(function() {
-  $('#table-requete-anonymisees').DataTable({
-    dom: 'Bfrtip',
-    buttons: [
-      'csvHtml5', 'excelHtml5', 'pdfHtml5'
-    ]
-  });
-});
-</script>
+
+
 
 <div class="container">
-  <h2>Tableau dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
+  <h2>Tableau -Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 
 <div class="d-flex justify-content-rigth">
-  <table id="table-depense-categorie-csp" class="table table-striped">
+
     <thead>
       <tr>
         <th>Catégorie socioprofessionnelle</th>
@@ -106,19 +100,10 @@ $(document).ready(function() {
   </table>
 </div>
 
-<script>
-$(document).ready(function() {
-  $('#table-depense-categorie-csp').DataTable({
-    dom: 'Bfrtip',
-    buttons: [
-      'csvHtml5', 'excelHtml5', 'pdfHtml5'
-    ]
-  });
-});
-</script>
+
 
 <div class="container">
-  <h2>Dépense panier moyen en fonction de la catégorie socioprofessionnelle</h2>
+  <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 
 <div class="d-flex justify-content-rigth">
@@ -141,27 +126,18 @@ $(document).ready(function() {
 </div>
 </div>
 
-<script>
-$(document).ready(function() {
-  $('#table-depense-panier-moyen-csp').DataTable({
-    dom: 'Bfrtip',
-    buttons: [
-      'csvHtml5', 'excelHtml5', 'pdfHtml5'
-    ]
-  });
-});
-</script>
+
 
 <div class="container">
-  <h2>Graphique - Dépense du panier moyen par catégorie socioprofessionnelle</h2>
+  <h2>Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>  
 
-{% comment "" %} <div>
-  <canvas id="myChart"></canvas>
+ <div>
+  <canvas id="graphique1"></canvas>
 </div>
 
 <script>
-  const ctx = document.getElementById('myChart');
+  const ctx = document.getElementById('graphique1');
 
   new Chart(ctx, {
     type: 'bar',
@@ -190,13 +166,15 @@ $(document).ready(function() {
     }
   });
 </script>
-{% endcomment %}
 
-<div>
-  <canvas class = container id="myChart"></canvas>
+<div class="container">
+  <h2>Graphique - Dépense du panier moyen par catégorie socioprofessionnelle</h2>
+</div>  
+
+ <div>
+  <canvas id="myChart"></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   const ctx = document.getElementById('myChart');
@@ -204,10 +182,18 @@ $(document).ready(function() {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: [
+        {% for requete in depense_panier_moyen_csp %}
+        "{{ requete.csp_name_id }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Montant achat',
+        data: [
+          {% for requete in depense_panier_moyen_csp %}
+          {{ requete.panier_moyen }}{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ],
         borderWidth: 1
       }]
     },
