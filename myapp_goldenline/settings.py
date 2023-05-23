@@ -13,6 +13,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import psycopg2
 import os
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name, default_value=None):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        if default_value is None:
+            error_msg = "Set the {} environemment variable".format(var_name)
+            raise ImproperlyConfigured(error_msg)
+        else:
+            return default_value
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
