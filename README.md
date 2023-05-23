@@ -16,6 +16,7 @@ Afficher sous forme de graphique la dépense du panier moyen en fonction de la c
 
 Exporter des données de la table collecte.
 
+Fichiers de l'application web : appcollect
 
 Connexion démo : 
 https://goldenline-project.herokuapp.com/accounts/login/?next=/appcollect/visualisation/
