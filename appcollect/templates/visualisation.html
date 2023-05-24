@@ -130,7 +130,7 @@
     var depensesCsp = new Chart(ctx1, {
       type: 'doughnut',
       data: {
-        labels: [{% for data in datas %}'{{ data.csp_name_id }}',{% endfor %}],
+        labels: [{% for data in datas %}'{{ data.csp_name_id }}',{% endfor %}]
         datasets: [{
           label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
           data: [{% for data in datas %}{{ data.purchase_amount }},{% endfor %}],
