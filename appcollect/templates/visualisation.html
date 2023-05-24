@@ -9,7 +9,41 @@
     <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 
-#Crétation tableau Données Collecte
+
+#Crétation tableau Données Anonymisée
+<div class="container">
+  <h2>Tableau - Données Anonymisées</h2>
+</div>
+
+  <div class="d-flex justify-content-rigth">
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre enfant</th>
+        <th>Catégorie socioprofessionnelle</th>
+        <th>Montant achat</th>
+        <th>Date achat</th>
+        <th>Collect ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for requete in requetes_anonymisees %}
+      <tr>
+        <td>{{ requete.id }}</td>
+        <td>{{ requete.child_number }}</td>
+        <td>{{ requete.csp_name_id }}</td>
+        <td>{{ requete.purchase_amount }}</td>
+        <td>{{ requete.purchase_date }}</td>
+        <td>{{ requete.nb_collect_id }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+#Création tableau Données Collecte
 <div class="container">
   <h2>Tableau - Données Collecte</h2>
  <div class="d-flex justify-content-rigth ">
@@ -46,42 +80,6 @@ $(document).ready(function() {
   });
 });
 </script>
-
-
-#Crétation tableau Données Anonymisée
-<div class="container">
-  <h2>Tableau - Données Anonymisées</h2>
-</div>
-
-  <div class="d-flex justify-content-rigth">
-
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre enfant</th>
-        <th>Catégorie socioprofessionnelle</th>
-        <th>Montant achat</th>
-        <th>Date achat</th>
-        <th>Collect ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for requete in requetes_anonymisees %}
-      <tr>
-        <td>{{ requete.id }}</td>
-        <td>{{ requete.child_number }}</td>
-        <td>{{ requete.csp_name_id }}</td>
-        <td>{{ requete.purchase_amount }}</td>
-        <td>{{ requete.purchase_date }}</td>
-        <td>{{ requete.nb_collect_id }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-
-
-
 
 <div class="container">
   <h2>Tableau -Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
