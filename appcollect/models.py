@@ -8,7 +8,7 @@
 
 from django.db import models
 
-
+#Création de la table RequeteAnonymisees
 class RequeteAnonymisees(models.Model):
     id = models.AutoField(primary_key=True)
     id_customer = models.BigIntegerField()
@@ -26,7 +26,7 @@ class RequeteAnonymisees(models.Model):
         managed = False
         db_table = "requete_anonymisees"
 
-
+#Création de la table RequeteCollecte
 class RequeteCollecte(models.Model):
     id = models.AutoField(primary_key=True)
     nb_collect_id = models.BigIntegerField(blank=True, null=True)
@@ -41,7 +41,7 @@ class RequeteCollecte(models.Model):
         managed = False
         db_table = "requete_collecte"
 
-
+#Création de la table DataDepenseCsp
 class DataDepenseCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
@@ -55,7 +55,7 @@ class DataDepenseCsp(models.Model):
         managed = False
         db_table = "depense_categorie_csp"
 
-
+#Création de la table DataPanierMoyenCsp
 class DataPanierMoyenCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
