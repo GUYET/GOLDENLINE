@@ -29,7 +29,7 @@ def visualisation(request):
 
 @login_required
 class DataDepenseCspChartView(TemplateView):
-        template_name="visualisation.html",
+    template_name="visualisation.html"
 
     def chart_data_depense_csp(self, **kwargs):
         context = super().chart_data_depense_csp(**kwargs)
