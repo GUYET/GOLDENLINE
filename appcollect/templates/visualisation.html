@@ -1,5 +1,7 @@
 {% extends '__base.html' %}
 
+{%block scripts%}
+{%block scripts%}
 
 {%block content%}
 
@@ -33,7 +35,7 @@
 </div>
 </div>
 
-{%block scripts%}
+
 <script>
 $(document).ready(function() {
   $('#table-depense-panier-moyen-csp').DataTable({
@@ -137,7 +139,7 @@ $(document).ready(function() {
 </div>  
 
 
-{%block scripts%}
+
 <script>
 // jquery function
 $(document).ready(function(){
@@ -180,7 +182,6 @@ $(document).ready(function(){
 </script>
 
 
-{%endblock scripts%}
 
 <!-- displaying the chart -->
 <!-- you can also play around with the width and height to increase or decrease the chart size -->
