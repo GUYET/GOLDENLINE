@@ -84,11 +84,23 @@ WSGI_APPLICATION = "myapp_goldenline.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": BASE_DIR / "db.postgres.sql",
+    "test": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "appcollect",
+        "USER": "postgres",
+        "PASSWORD": "($*lsfLxhBuqLp$",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
+    }
+}
+
 
 DATABASE_URL = os.environ["DATABASE_URL"]
 conn = psycopg2.connect(DATABASE_URL, sslmode="require")
