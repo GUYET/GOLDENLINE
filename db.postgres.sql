@@ -28,7 +28,7 @@ CREATE FOREIGN DATA WRAPPER heroku;
 
 ALTER FOREIGN DATA WRAPPER heroku OWNER TO postgres;
 
-SET default_tablespace = '';
+SET default_tablespace = 'appcollect';
 
 SET default_table_access_method = heap;
 
