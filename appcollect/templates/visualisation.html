@@ -127,7 +127,7 @@
 <script>
   $(document).ready(function() {
     var ctx1 = document.getElementById('depensesCsp').getContext('2d');
-    var depensesCsp = new Chart(ctx, {
+    var depensesCsp = new Chart(ctx1, {
       type: 'doughnut',
       data: {
         labels: [{% for data in datas %}'{{ data.csp_name_id }}',{% endfor %}],
@@ -172,7 +172,7 @@
 <script>
   $(document).ready(function() {
     var ctx2 = document.getElementById('depensesPanierCsp).getContext('2d');
-    var depensesPanierCsp = new Chart(ctx, {
+    var depensesPanierCsp = new Chart(ctx2, {
       type: 'doughnut',
       data: {
         labels: [{% for data in datas %}'{{ data.csp_name_id }}',{% endfor %}],
