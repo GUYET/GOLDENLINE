@@ -1,12 +1,13 @@
 {% extends '__base.html' %}
 
-{% block body %}
 
+{%block content%}
 
 <div class="container">
     <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 
+#Crétation tableau Données Collecte
 <div class="container">
   <h2>Tableau - Données Collecte</h2>
  <div class="d-flex justify-content-rigth ">
@@ -32,6 +33,7 @@
 </div>
 </div>
 
+{%block scripts%}
 <script>
 $(document).ready(function() {
   $('#table-depense-panier-moyen-csp').DataTable({
@@ -42,7 +44,9 @@ $(document).ready(function() {
   });
 });
 </script>
+{%endblock scripts%}
 
+#Crétation tableau Données Anonymisée
 <div class="container">
   <h2>Tableau - Données Anonymisées</h2>
 </div>
@@ -132,80 +136,64 @@ $(document).ready(function() {
   <h2>Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>  
 
- <div>
-  <canvas id="graphique1"></canvas>
-</div>
 
+{%block scripts%}
 <script>
-  const ctx = document.getElementById('graphique1');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [
-        {% for requete in depense_panier_moyen_csp %}
-        "{{ requete.csp_name_id }}"{% if not forloop.last %},{% endif %}
-        {% endfor %}
-      ],
-      datasets: [{
-        label: 'Montant achat',
-        data: [
-          {% for requete in depense_panier_moyen_csp %}
-          {{ requete.panier_moyen }}{% if not forloop.last %},{% endif %}
-          {% endfor %}
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+// jquery function
+$(document).ready(function(){
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [{%for data in datas%}'{{data.csp_name_id}}',{%endfor%}] //loop through queryset, 
+                datasets: [{
+                    label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
+                    data: [{%for data in datas%}{{data.purchase_amount},{%endfor%}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)', 
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+});
+    });
 </script>
+
+
+{%endblock scripts%}
+
+<!-- displaying the chart -->
+<!-- you can also play around with the width and height to increase or decrease the chart size -->
+<canvas id="myChart" width="400" height="100"></canvas>  
+
+
 
 <div class="container">
   <h2>Graphique - Dépense du panier moyen par catégorie socioprofessionnelle</h2>
-</div>  
 
- <div>
-  <canvas id="myChart"></canvas>
 </div>
 
 
-<script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [
-        {% for requete in depense_panier_moyen_csp %}
-        "{{ requete.csp_name_id }}"{% if not forloop.last %},{% endif %}
-        {% endfor %}
-      ],
-      datasets: [{
-        label: 'Montant achat',
-        data: [
-          {% for requete in depense_panier_moyen_csp %}
-          {{ requete.panier_moyen }}{% if not forloop.last %},{% endif %}
-          {% endfor %}
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+{%endblock content%}
 
 
-{% endblock body %}
