@@ -33,6 +33,6 @@ class DataDepenseCspChartView(TemplateView):
 
     def chart_data_depense_csp(self, **kwargs):
         context = super().chart_data_depense_csp(**kwargs)
-        context["data"] = DataDepenseCsp.objects.all()
+        context["datas"] = DataDepenseCsp.objects.all()
         return context
     
