@@ -1,7 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-
-
 from .models import (
     RequeteCollecte,
     RequeteAnonymisees,
@@ -9,7 +8,7 @@ from .models import (
     DataPanierMoyenCsp,
 )
 
-
+#Crétion des views
 @login_required
 def visualisation(request):
     requetes_collecte = RequeteCollecte.objects.all()
@@ -27,3 +26,13 @@ def visualisation(request):
             "depense_panier_moyen_csp": depense_panier_moyen_csp,
         },
     )
+
+@login_required
+class DataDepenseCspChartView(TemplateView):
+        template_name="visualisation.html",
+
+    def chart_data_depense_csp(self, **kwargs):
+        context = super().chart_data_depense_csp(**kwargs)
+        context["data"] = DataDepenseCsp.objects.all()
+        return context
+    
