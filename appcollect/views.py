@@ -29,19 +29,20 @@ def visualisation(request):
 
 @login_required
 class DataDepenseCspChartView(TemplateView):
-    template_name="visualisation.html"
+    template_name = "visualisation.html"
 
-    def chart_data_depense_csp(self, **kwargs):
-        context = super().chart_data_depense_csp(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context["datas"] = DataDepenseCsp.objects.all()
         return context
-    
-@login_required
-class DataPanierMoyenCsp(TemplateView):
-    template_name="visualisation.html"
 
-    def chart_data_panier_moyen_csp(self, **kwargs):
-        context = super().chart_data_panier_moyen_csp(**kwargs)
+@login_required
+class DataPanierMoyenCspChartView(TemplateView):
+    template_name = "visualisation.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context["datas"] = DataPanierMoyenCsp.objects.all()
         return context
+    
     
