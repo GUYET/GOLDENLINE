@@ -83,14 +83,16 @@ WSGI_APPLICATION = "myapp_goldenline.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+    DATABASES = {
     "test": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": "mydatabase",
     }
 }
 
-DATABASES = {
+else:
+    DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "appcollect",
