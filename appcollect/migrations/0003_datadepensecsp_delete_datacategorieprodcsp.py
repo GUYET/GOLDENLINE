@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "db_table": "depense_categorie_scp",
+                "db_table": "depense_categorie_csp",
                 "managed": False,
             },
         ),
