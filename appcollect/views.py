@@ -36,3 +36,12 @@ class DataDepenseCspChartView(TemplateView):
         context["datas"] = DataDepenseCsp.objects.all()
         return context
     
+@login_required
+class DataPanierMoyenCsp(TemplateView):
+    template_name="visualisation.html"
+
+    def chart_data_panier_moyen_csp(self, **kwargs):
+        context = super().chart_data_panier_moyen_csp(**kwargs)
+        context["datas"] = DataPanierMoyenCsp.objects.all()
+        return context
+    
