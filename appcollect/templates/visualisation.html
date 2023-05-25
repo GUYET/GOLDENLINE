@@ -74,7 +74,7 @@
   </div>
 </div>
 <div class="container">
-  <h2>Tableau - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
+  <h2>Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
    <div class="d-flex justify-content-right">
@@ -98,6 +98,34 @@
 </div>
 <div class="container">
   
+
+  
+  
+  <h2>Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
+</div>
+<div class="container">
+  <div class="d-flex justify-content-right">
+        <table id="table-depense-panier-moyen-csp" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Catégorie socioprofessionnelle</th>
+          <th>Montant achat</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for requete in depense_panier_csp %}
+        <tr>
+          <td>{{ requete.csp_name_id }}</td>
+          <td>{{ requete.panier_csp }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  
+  
  <!--Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
   <div>
   <canvas id="myChart"></canvas>
@@ -115,7 +143,7 @@
       labels: [{{ requete.csp_name_id }}],
       datasets: [{
         label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [1{{ requete.purchase_amount }}],
+        data: [1{{ requete.panier }}],
         borderWidth: 1
       }]
     },
@@ -130,40 +158,6 @@
 </script>
 
  
-
- 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-        <table id="table-depense-panier-moyen-csp" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Catégorie socioprofessionnelle</th>
-          <th>Montant achat</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for requete in depense_panier_moyen_csp %}
-        <tr>
-          <td>{{ requete.csp_name_id }}</td>
-          <td>{{ requete.panier_moyen }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="container">
   <h2>Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
