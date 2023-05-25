@@ -188,8 +188,39 @@
 </div>
 <div class="container">
   
-  <h2>Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
+  <h2>Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
+
+<div>
+  <canvas id="myChart2"></canvas>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart2');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['artisan', 'cadre', 'retraité', 'employé'],
+      datasets: [{
+        label: 'Panier moyen dépenses catégorie socioprofessionnelle',
+        data: [ 60.44, 70.83, 59.55, 58.38],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<!--
+<</div>
 <div class="container">
   <canvas id="depensesCsp" width="400" height="100"></canvas>
 </div>
@@ -277,5 +308,6 @@
     });
   });
 </script>
+-->
 
 {% endblock content %}
