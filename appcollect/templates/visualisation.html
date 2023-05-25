@@ -107,14 +107,15 @@
 
 <script>
   const ctx = document.getElementById('myChart');
+  var 
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['employé', 'artisan', 'cadre', 'retraité'],
+      labels: [{{ requete.csp_name_id }}],
       datasets: [{
         label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [1{{ requete.purchase_amount }}],
         borderWidth: 1
       }]
     },
