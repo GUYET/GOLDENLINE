@@ -73,7 +73,7 @@ class DataDepenseCspAdmin(admin.ModelAdmin):
         "purchase_amount",
     )
 
- class DataDepenseTotalCspAdmin(admin.ModelAdmin):
+class DataDepenseTotalCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
@@ -89,7 +89,6 @@ class DataDepenseCspAdmin(admin.ModelAdmin):
         "csp_name_id",
         "depense_csp",
     )
-
 
 class DataPanierMoyenCspAdmin(admin.ModelAdmin):
     list_display = (
