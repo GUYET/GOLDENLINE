@@ -4,7 +4,7 @@ from .models import (
     RequeteCollecte,
     DataDepenseCsp,
     DataDepenseTotalCsp,
-    DataPanierCsp,
+    DataPanierMoyenCsp,
 )
 
 class RequeteAnonymiseesAdmin(admin.ModelAdmin):
@@ -91,7 +91,7 @@ class DataDepenseCspAdmin(admin.ModelAdmin):
     )
 
 
-class DataPanierCspAdmin(admin.ModelAdmin):
+class DataPanierMoyenCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
@@ -113,4 +113,4 @@ admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
 admin.site.register(RequeteAnonymisees, RequeteAnonymiseesAdmin)
 admin.site.register(DataDepenseCsp, DataDepenseCspAdmin)
 admin.site.register(DataDepenseTotalCsp, DataDepenseTotalCspAdmin)
-admin.site.register(DataPanierCsp, DataPanierCspAdmin)
+admin.site.register(DataPanierMoyenCsp, DataPanierMoyenCspAdmin)
