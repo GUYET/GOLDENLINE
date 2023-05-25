@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
--- Dumped by pg_dump version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
+-- Dumped from database version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
 
--- Started on 2023-05-24 15:08:46 CEST
+-- Started on 2023-05-25 13:08:58 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -28,7 +28,7 @@ CREATE FOREIGN DATA WRAPPER heroku;
 
 ALTER FOREIGN DATA WRAPPER heroku OWNER TO postgres;
 
-SET default_tablespace = 'appcollect';
+SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
@@ -244,7 +244,7 @@ CREATE SEQUENCE public.depense_categorie_scp_id_seq
 ALTER TABLE public.depense_categorie_scp_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3521 (class 0 OID 0)
+-- TOC entry 3523 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: depense_categorie_scp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -254,17 +254,17 @@ ALTER SEQUENCE public.depense_categorie_scp_id_seq OWNED BY public.depense_categ
 
 --
 -- TOC entry 235 (class 1259 OID 20139)
--- Name: depense_panier_moyen_csp; Type: TABLE; Schema: public; Owner: postgres
+-- Name: depense_panier_csp; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.depense_panier_moyen_csp (
+CREATE TABLE public.depense_panier_csp (
     csp_name_id name,
-    panier_moyen numeric,
+    panier_csp numeric,
     id bigint NOT NULL
 );
 
 
-ALTER TABLE public.depense_panier_moyen_csp OWNER TO postgres;
+ALTER TABLE public.depense_panier_csp OWNER TO postgres;
 
 --
 -- TOC entry 236 (class 1259 OID 20197)
@@ -282,12 +282,12 @@ CREATE SEQUENCE public.depense_panier_moyen_csp_id_seq
 ALTER TABLE public.depense_panier_moyen_csp_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3522 (class 0 OID 0)
+-- TOC entry 3524 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: depense_panier_moyen_csp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.depense_panier_moyen_csp_id_seq OWNED BY public.depense_panier_moyen_csp.id;
+ALTER SEQUENCE public.depense_panier_moyen_csp_id_seq OWNED BY public.depense_panier_csp.id;
 
 
 --
@@ -432,7 +432,7 @@ CREATE SEQUENCE public.requete_anonymisees_id_seq
 ALTER TABLE public.requete_anonymisees_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3523 (class 0 OID 0)
+-- TOC entry 3525 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: requete_anonymisees_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -471,7 +471,7 @@ CREATE SEQUENCE public.requete_collecte_id_seq
 ALTER TABLE public.requete_collecte_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3524 (class 0 OID 0)
+-- TOC entry 3526 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: requete_collecte_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -495,7 +495,7 @@ CREATE SEQUENCE public.requete_donnees_anonymisees_client_id_customer_seq
 ALTER TABLE public.requete_donnees_anonymisees_client_id_customer_seq OWNER TO postgres;
 
 --
--- TOC entry 3525 (class 0 OID 0)
+-- TOC entry 3527 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: requete_donnees_anonymisees_client_id_customer_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -513,10 +513,10 @@ ALTER TABLE ONLY public.depense_categorie_csp ALTER COLUMN id SET DEFAULT nextva
 
 --
 -- TOC entry 3286 (class 2604 OID 20198)
--- Name: depense_panier_moyen_csp id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: depense_panier_csp id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.depense_panier_moyen_csp ALTER COLUMN id SET DEFAULT nextval('public.depense_panier_moyen_csp_id_seq'::regclass);
+ALTER TABLE ONLY public.depense_panier_csp ALTER COLUMN id SET DEFAULT nextval('public.depense_panier_moyen_csp_id_seq'::regclass);
 
 
 --
@@ -544,7 +544,7 @@ ALTER TABLE ONLY public.requete_collecte ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3498 (class 0 OID 19959)
+-- TOC entry 3500 (class 0 OID 19959)
 -- Dependencies: 219
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -555,7 +555,7 @@ COPY public.auth_group (id, name) FROM stdin;
 
 
 --
--- TOC entry 3500 (class 0 OID 19967)
+-- TOC entry 3502 (class 0 OID 19967)
 -- Dependencies: 221
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -566,7 +566,7 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 3496 (class 0 OID 19953)
+-- TOC entry 3498 (class 0 OID 19953)
 -- Dependencies: 217
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -628,7 +628,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 
 --
--- TOC entry 3502 (class 0 OID 19973)
+-- TOC entry 3504 (class 0 OID 19973)
 -- Dependencies: 223
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -640,7 +640,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 
 
 --
--- TOC entry 3504 (class 0 OID 19981)
+-- TOC entry 3506 (class 0 OID 19981)
 -- Dependencies: 225
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -651,7 +651,7 @@ COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- TOC entry 3506 (class 0 OID 19987)
+-- TOC entry 3508 (class 0 OID 19987)
 -- Dependencies: 227
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -661,7 +661,7 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 3512 (class 0 OID 20103)
+-- TOC entry 3514 (class 0 OID 20103)
 -- Dependencies: 233
 -- Data for Name: depense_categorie_csp; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -781,12 +781,12 @@ employé	50.00	120
 
 
 --
--- TOC entry 3514 (class 0 OID 20139)
+-- TOC entry 3516 (class 0 OID 20139)
 -- Dependencies: 235
--- Data for Name: depense_panier_moyen_csp; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: depense_panier_csp; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.depense_panier_moyen_csp (csp_name_id, panier_moyen, id) FROM stdin;
+COPY public.depense_panier_csp (csp_name_id, panier_csp, id) FROM stdin;
 artisan	1965.00	1
 cadre	1310.00	2
 retraité	1310.00	3
@@ -795,7 +795,7 @@ employé	1965.00	4
 
 
 --
--- TOC entry 3508 (class 0 OID 20045)
+-- TOC entry 3510 (class 0 OID 20045)
 -- Dependencies: 229
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -811,7 +811,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 
 
 --
--- TOC entry 3494 (class 0 OID 19945)
+-- TOC entry 3496 (class 0 OID 19945)
 -- Dependencies: 215
 -- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -834,7 +834,7 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 
 
 --
--- TOC entry 3492 (class 0 OID 19937)
+-- TOC entry 3494 (class 0 OID 19937)
 -- Dependencies: 213
 -- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -867,7 +867,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 
 --
--- TOC entry 3509 (class 0 OID 20073)
+-- TOC entry 3511 (class 0 OID 20073)
 -- Dependencies: 230
 -- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -879,7 +879,7 @@ lpr3wqgo4435tbvdr5butccdi5ybs48q	.eJxVjDsOwyAQBe9CHSGWxXxSpvcZELAQnERYMnYV5e4Rko
 
 
 --
--- TOC entry 3488 (class 0 OID 19924)
+-- TOC entry 3490 (class 0 OID 19924)
 -- Dependencies: 209
 -- Data for Name: requete_anonymisees; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -899,7 +899,7 @@ COPY public.requete_anonymisees (id_customer, child_number, csp_name_id, purchas
 
 
 --
--- TOC entry 3490 (class 0 OID 19932)
+-- TOC entry 3492 (class 0 OID 19932)
 -- Dependencies: 211
 -- Data for Name: requete_collecte; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -920,7 +920,7 @@ COPY public.requete_collecte (nb_collect_id, purchase_amount, product_category_n
 
 
 --
--- TOC entry 3526 (class 0 OID 0)
+-- TOC entry 3528 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -929,7 +929,7 @@ SELECT pg_catalog.setval('public.auth_group_id_seq', 1, true);
 
 
 --
--- TOC entry 3527 (class 0 OID 0)
+-- TOC entry 3529 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -938,7 +938,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, true);
 
 
 --
--- TOC entry 3528 (class 0 OID 0)
+-- TOC entry 3530 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -947,7 +947,7 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 52, true);
 
 
 --
--- TOC entry 3529 (class 0 OID 0)
+-- TOC entry 3531 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -956,7 +956,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, true);
 
 
 --
--- TOC entry 3530 (class 0 OID 0)
+-- TOC entry 3532 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -965,7 +965,7 @@ SELECT pg_catalog.setval('public.auth_user_id_seq', 2, true);
 
 
 --
--- TOC entry 3531 (class 0 OID 0)
+-- TOC entry 3533 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -974,7 +974,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 3532 (class 0 OID 0)
+-- TOC entry 3534 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: depense_categorie_scp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -983,7 +983,7 @@ SELECT pg_catalog.setval('public.depense_categorie_scp_id_seq', 120, true);
 
 
 --
--- TOC entry 3533 (class 0 OID 0)
+-- TOC entry 3535 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: depense_panier_moyen_csp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -992,7 +992,7 @@ SELECT pg_catalog.setval('public.depense_panier_moyen_csp_id_seq', 4, true);
 
 
 --
--- TOC entry 3534 (class 0 OID 0)
+-- TOC entry 3536 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1001,7 +1001,7 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 6, true);
 
 
 --
--- TOC entry 3535 (class 0 OID 0)
+-- TOC entry 3537 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1010,7 +1010,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 13, true);
 
 
 --
--- TOC entry 3536 (class 0 OID 0)
+-- TOC entry 3538 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1019,7 +1019,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 23, true);
 
 
 --
--- TOC entry 3537 (class 0 OID 0)
+-- TOC entry 3539 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: requete_anonymisees_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1028,7 +1028,7 @@ SELECT pg_catalog.setval('public.requete_anonymisees_id_seq', 10, true);
 
 
 --
--- TOC entry 3538 (class 0 OID 0)
+-- TOC entry 3540 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: requete_collecte_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1037,7 +1037,7 @@ SELECT pg_catalog.setval('public.requete_collecte_id_seq', 11, true);
 
 
 --
--- TOC entry 3539 (class 0 OID 0)
+-- TOC entry 3541 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: requete_donnees_anonymisees_client_id_customer_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1160,6 +1160,15 @@ ALTER TABLE ONLY public.auth_user
 
 ALTER TABLE ONLY public.depense_categorie_csp
     ADD CONSTRAINT depense_categorie_csp_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3341 (class 2606 OID 20209)
+-- Name: depense_panier_csp depense_panier_csp_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.depense_panier_csp
+    ADD CONSTRAINT depense_panier_csp_pkey PRIMARY KEY (id);
 
 
 --
@@ -1330,7 +1339,7 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 
 
 --
--- TOC entry 3342 (class 2606 OID 20008)
+-- TOC entry 3344 (class 2606 OID 20008)
 -- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1339,7 +1348,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3341 (class 2606 OID 20003)
+-- TOC entry 3343 (class 2606 OID 20003)
 -- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1348,7 +1357,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3340 (class 2606 OID 19994)
+-- TOC entry 3342 (class 2606 OID 19994)
 -- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1357,7 +1366,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- TOC entry 3344 (class 2606 OID 20023)
+-- TOC entry 3346 (class 2606 OID 20023)
 -- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1366,7 +1375,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3343 (class 2606 OID 20018)
+-- TOC entry 3345 (class 2606 OID 20018)
 -- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1375,7 +1384,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3346 (class 2606 OID 20037)
+-- TOC entry 3348 (class 2606 OID 20037)
 -- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1384,7 +1393,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3345 (class 2606 OID 20032)
+-- TOC entry 3347 (class 2606 OID 20032)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1393,7 +1402,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3347 (class 2606 OID 20053)
+-- TOC entry 3349 (class 2606 OID 20053)
 -- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1402,7 +1411,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- TOC entry 3348 (class 2606 OID 20058)
+-- TOC entry 3350 (class 2606 OID 20058)
 -- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1410,7 +1419,7 @@ ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
--- Completed on 2023-05-24 15:08:47 CEST
+-- Completed on 2023-05-25 13:08:58 CEST
 
 --
 -- PostgreSQL database dump complete
