@@ -186,25 +186,28 @@
     </table>
   </div>
 </div>
+
+<!--Création Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
+
 <div class="container">
   
   <h2>Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
 
 <div>
-  <canvas id="myChart2"></canvas>
+  <canvas id="myChart"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart2');
+  const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['artisan', 'cadre', 'retraité', 'employé'],
       datasets: [{
-        label: 'Panier moyen dépenses catégorie socioprofessionnelle',
-        data: [ 60.44, 70.83, 59.55, 58.38],
+        label: 'Dépenses panier moyen catégorie socioprofessionnelle',
+        data: [ 2055.00, 1700.00, 1310.00, 1985.00],
         borderWidth: 1
       }]
     },
