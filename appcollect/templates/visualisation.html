@@ -18,6 +18,7 @@
   <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 <div class="container">
+ <!-- Création Tableau - Données Anonymisées-->
   <h2>Tableau - Données Anonymisées</h2>
 </div>
 <div class="container">
@@ -49,6 +50,9 @@
   </div>
 </div>
 <div class="container">
+  
+  <!-- Création Tableau - Données Collecte-->
+
   <h2>Tableau - Données Collecte</h2>
 </div>
 <div class="container">
@@ -74,11 +78,12 @@
   </div>
 </div>
 <div class="container">
+    <!-- Création Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
   <h2>Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
    <div class="d-flex justify-content-right">
-         <table id="table-depenses-categorie-csp" class="table table-striped">
+         <table id="depense_detail_csp" class="table table-striped">
       <thead>
         <tr>
           <th>Catégorie socioprofessionnelle</th>
@@ -86,7 +91,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for requete in depense_categorie_csp %}
+        {% for requete in depense_detail_csp %}
         <tr>
           <td>{{ requete.csp_name_id }}</td>
           <td>{{ requete.purchase_amount }}</td>
@@ -99,13 +104,13 @@
 <div class="container">
   
 
-  
+   <!-- Création Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
   
   <h2>Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
-        <table id="table-depense-panier-moyen-csp" class="table table-striped">
+        <table id="depense_total_par_csp" class="table table-striped">
       <thead>
         <tr>
           <th>Catégorie socioprofessionnelle</th>
@@ -126,7 +131,7 @@
 <div class="container">
   
   
- <!--Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
+ <!--Création Graphique - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
   <div>
   <canvas id="myChart"></canvas>
 </div>
@@ -140,7 +145,7 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [{{ epense.csp_name_id }}],
+      labels: [{{ depense.csp_name_id }}],
       datasets: [{
         label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
         data: [1{{ depense.depense_csp}}],
@@ -157,7 +162,32 @@
   });
 </script>
 
- 
+ <!-- Création Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
+  
+  <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnellee</h2>
+</div>
+<div class="container">
+  <div class="d-flex justify-content-right">
+        <table id="depense_moyen_par_csp" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Catégorie socioprofessionnelle</th>
+          <th>Montant achat</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for depense in depense_moyen_par_csp %}
+        <tr>
+          <td>{{ depense.csp_name_id }}</td>
+          <td>{{ depense.moyenne_arrondie }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  
   <h2>Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
