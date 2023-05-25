@@ -55,8 +55,8 @@ class DataDepenseCsp(models.Model):
         managed = False
         db_table = "depense_detail_csp"
 
-#Création de la table DataPanierMoyenCsp
-class DataPanierMoyenCsp(models.Model):
+#Création de la table DataPanierCsp
+class DataPanierCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
         db_collation="C", blank=True, null=True
@@ -69,8 +69,8 @@ class DataPanierMoyenCsp(models.Model):
         managed = False
         db_table = "depense_moyen_par_csp"
    
-#Création de la table DataDepenseTotalCsp
-class DataDepenseTotalCsp(models.Model):
+#Création de la table  DataDepenseCsp
+class  DataDepenseCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
         db_collation="C", blank=True, null=True
