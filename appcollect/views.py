@@ -6,7 +6,7 @@ from .models import (
     RequeteCollecte,
     DataDepenseCsp,
     DataDepenseTotalCsp,
-    DataPanierCsp,
+    DataPanierMoyenCsp,
 )
 
 #Crétion des views
@@ -16,7 +16,7 @@ def visualisation(request):
     requetes_collecte = RequeteCollecte.objects.all()
     depense_detail_csp = DataDepenseCsp.objects.all()
     depense_depense_total_par_csp = DataDepenseTotalCsp.objects.all()
-    depense_moyen_par_csp = DataPanierCsp.objects.all()
+    depense_moyen_par_csp = DataPanierMoyenCsp.objects.all()
 
     return render(
         request,
