@@ -36,7 +36,7 @@ class DataDepenseCspChartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["datas"] = DataPanierCsp.objects.all()
+        context["datas"] = DataPanierMoyenCsp.objects.all()
         return context
 
 
