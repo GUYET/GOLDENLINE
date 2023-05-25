@@ -3,7 +3,7 @@ from .models import (
     RequeteCollecte,
     RequeteAnonymisees,
     DataDepenseCsp,
-    DataPanierMoyenCsp,
+    DataPanierCsp,
 )
 
 
@@ -76,25 +76,25 @@ class DataDepenseCspAdmin(admin.ModelAdmin):
     )
 
 
-class DataPanierMoyenCspAdmin(admin.ModelAdmin):
+class DataPanierCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
-        "panier_moyen",
+        "panier_csp",
     )
     list_filter = (
         "id",
         "csp_name_id",
-        "panier_moyen",
+        "panier_csp",
     )
     search_fields = (
         "id",
         "csp_name_id",
-        "panier_moyen",
+        "panier_csp",
     )
 
 
 admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
 admin.site.register(RequeteAnonymisees, RequeteAnonymiseesAdmin)
 admin.site.register(DataDepenseCsp, DataDepenseCspAdmin)
-admin.site.register(DataPanierMoyenCsp, DataPanierMoyenCspAdmin)
+admin.site.register(DataPanierCsp, DataPanierCspAdmin)
