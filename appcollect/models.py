@@ -55,19 +55,6 @@ class DataDepenseCsp(models.Model):
         managed = False
         db_table = "depense_detail_csp"
 
-#Création de la table DataPanierCsp
-class DataPanierCsp(models.Model):
-    id = models.AutoField(primary_key=True)
-    csp_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-    moyenne_arrondie = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-
-    class Meta:
-        managed = False
-        db_table = "depense_moyen_par_csp"
    
 #Création de la table  DataDepenseCsp
 class  DataDepenseCsp(models.Model):
@@ -82,3 +69,17 @@ class  DataDepenseCsp(models.Model):
     class Meta:
         managed = False
         db_table = "depense_total_par_csp"
+        
+#Création de la table DataPanierCsp
+class DataPanierCsp(models.Model):
+    id = models.AutoField(primary_key=True)
+    csp_name_id = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+    moyenne_arrondie = models.TextField(
+        db_collation="C", blank=True, null=True
+    )  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = "depense_moyen_par_csp"
