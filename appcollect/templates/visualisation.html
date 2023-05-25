@@ -93,10 +93,10 @@
         </tr>
       </thead>
       <tbody>
-        {% for requete in depense_detail_csp %}
+        {% for depense in depense_detail_csp %}
         <tr>
-          <td>{{ requete.csp_name_id }}</td>
-          <td>{{ requete.purchase_amount }}</td>
+          <td>{{ depense.csp_name_id }}</td>
+          <td>{{ depense.purchase_amount }}</td>
         </tr>
         {% endfor %}
       </tbody>
