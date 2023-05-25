@@ -37,12 +37,7 @@
     {%block content%}   
    {%endblock content%} 
    <div class="container">
-    {% if user.is_authenticated %}
-         <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-    {% else %}
-         <p>Welcome, new user. Please log in.</p>
-    {% endif %}
-
+ 
         {% if messages %}
             <ul class="messages">
             {% for message in messages %}
