@@ -96,7 +96,7 @@
   </div>
 </div>
 <div class="container">
- #Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle
+ //Graphique - Dépenses par catégorie en fonction de la catégorie socioprofessionnelle
   <div>
   <canvas id="myChart"></canvas>
 </div>
@@ -109,9 +109,9 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: [{% for data in datas %}'{{ data.csp_name_id }}',{% endfor %}],
       datasets: [{
-        label: '# of Votes',
+        label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
         data: [12, 19, 3, 5, 2, 3],
         borderWidth: 1
       }]
