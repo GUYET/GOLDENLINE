@@ -5,25 +5,28 @@ from .models import (
     RequeteAnonymisees,
     RequeteCollecte,
     DataDepenseCsp,
+    DataDepenseTotalCsp,
     DataPanierCsp,
 )
 
 #Crétion des views
 @login_required
 def visualisation(request):
-    requetes_collecte = RequeteCollecte.objects.all()
     requetes_anonymisees = RequeteAnonymisees.objects.all()
-    depense_categorie_csp = DataDepenseCsp.objects.all()
-    depense_panier_csp = DataPanierCsp.objects.all()
+    requetes_collecte = RequeteCollecte.objects.all()
+    depense_detail_csp = DataDepenseCsp.objects.all()
+    depense_depense_total_par_csp = DataDepenseTotalCsp.objects.all()
+    depense_moyen_par_csp = DataPanierCsp.objects.all()
 
     return render(
         request,
         template_name="visualisation.html",
         context={
-            "requetes_collecte": requetes_collecte,
             "requetes_anonymisees": requetes_anonymisees,
-            "depense_categorie_csp": depense_categorie_csp,
-            "depense_panier_csp": depense_panier_csp,
+            "requetes_collecte": requetes_collecte,
+            "depense_detail_csp": depense_detail_csp,
+            "depense_depense_total_par_csp": depense_total_par_csp,
+            "depense_moyen_par_csp": depense_moyen_par_csp,
         },
     )
 
