@@ -1,32 +1,10 @@
 from django.contrib import admin
 from .models import (
-    RequeteCollecte,
     RequeteAnonymisees,
+    RequeteCollecte,
     DataDepenseCsp,
     DataPanierCsp,
 )
-
-
-class RequeteCollecteAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "nb_collect_id",
-        "purchase_amount",
-        "product_category_name_id",
-    )
-    list_filter = (
-        "id",
-        "nb_collect_id",
-        "purchase_amount",
-        "product_category_name_id",
-    )
-    search_fields = (
-        "id",
-        "nb_collect_id",
-        "purchase_amount",
-        "product_category_name_id",
-    )
-
 
 class RequeteAnonymiseesAdmin(admin.ModelAdmin):
     list_display = (
@@ -57,22 +35,41 @@ class RequeteAnonymiseesAdmin(admin.ModelAdmin):
         "nb_collect_id",
     )
 
-
+class RequeteCollecteAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
+    list_filter = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
+    search_fields = (
+        "id",
+        "nb_collect_id",
+        "purchase_amount",
+        "product_category_name_id",
+    )
+    
 class DataDepenseCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
-        "purchase_amount",
+        "depense_csp",
     )
     list_filter = (
         "id",
         "csp_name_id",
-        "purchase_amount",
+        "depense_csp",
     )
     search_fields = (
         "id",
         "csp_name_id",
-        "purchase_amount",
+        "depense_csp",
     )
 
 
@@ -80,17 +77,17 @@ class DataPanierCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
-        "panier_csp",
+        "moyenne_arrondie",
     )
     list_filter = (
         "id",
         "csp_name_id",
-        "panier_csp",
+        "moyenne_arrondie",
     )
     search_fields = (
         "id",
         "csp_name_id",
-        "panier_csp",
+        "moyenne_arrondie",
     )
 
 
