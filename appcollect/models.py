@@ -56,8 +56,8 @@ class DataDepenseCsp(models.Model):
         db_table = "depense_detail_csp"
 
    
-#Création de la table  DataDepenseCsp
-class  DataDepenseCsp(models.Model):
+#Création de la table DataDepenseTotalCsp
+class  DataDepenseTotalCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
         db_collation="C", blank=True, null=True
