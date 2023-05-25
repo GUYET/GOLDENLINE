@@ -142,15 +142,14 @@
 
 <script>
   const ctx = document.getElementById('myChart');
-  var 
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [{{ depense.csp_name_id }}],
+      labels: [artisan, cadre, retraité, employé ],
       datasets: [{
         label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [1{{ depense.depense_csp}}],
+        data: [ 2055,00, 1700,00, 1310,00, 1985,00 ],
         borderWidth: 1
       }]
     },
