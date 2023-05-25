@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from .models import (
@@ -8,6 +9,23 @@ from .models import (
     DataDepenseTotalCsp,
     DataPanierMoyenCsp,
 )
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            # Authentification réussie, connectez l'utilisateur
+            login(request, user)
+            return redirect('accueil')  # Redirigez vers la page d'accueil ou une autre page
+        else:
+            # Authentification échouée, affichez un message d'erreur
+            error_message = "Nom d'utilisateur ou mot de passe incorrect."
+            return render(request, 'login.html', {'error_message': error_message})
+    
+    return render(request, 'login.html')
 
 #Crétion des views
 @login_required
