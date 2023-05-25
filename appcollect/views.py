@@ -5,7 +5,7 @@ from .models import (
     RequeteCollecte,
     RequeteAnonymisees,
     DataDepenseCsp,
-    DataPanierMoyenCsp,
+    DataPanierCsp,
 )
 
 #Crétion des views
@@ -14,7 +14,7 @@ def visualisation(request):
     requetes_collecte = RequeteCollecte.objects.all()
     requetes_anonymisees = RequeteAnonymisees.objects.all()
     depense_categorie_csp = DataDepenseCsp.objects.all()
-    depense_panier_moyen_csp = DataPanierMoyenCsp.objects.all()
+    depense_panier_csp = DataPanierCsp.objects.all()
 
     return render(
         request,
@@ -23,7 +23,7 @@ def visualisation(request):
             "requetes_collecte": requetes_collecte,
             "requetes_anonymisees": requetes_anonymisees,
             "depense_categorie_csp": depense_categorie_csp,
-            "depense_panier_moyen_csp": depense_panier_moyen_csp,
+            "depense_panier_csp": depense_panier_csp,
         },
     )
 
@@ -33,16 +33,9 @@ class DataDepenseCspChartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["datas"] = DataDepenseCsp.objects.all()
+        context["datas"] = DataPanierCsp.objects.all()
         return context
 
-@login_required
-class DataPanierMoyenCspChartView(TemplateView):
-    template_name = "visualisation.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["datas"] = DataPanierMoyenCsp.objects.all()
-        return context
     
     
