@@ -20,9 +20,10 @@ from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
-    path("", RedirectView.as_view(url="appcollect/visualisation/")),
-    path("appcollect/", include("appcollect.urls")),
+    path("", RedirectView.as_view(url="appcollect/visualisation")),
     path("health/", views.health),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
-]
+    path("appcollect/", include("appcollect.urls")),
+       
+   ]
