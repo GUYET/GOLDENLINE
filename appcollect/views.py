@@ -25,7 +25,7 @@ def visualisation(request):
             "requetes_anonymisees": requetes_anonymisees,
             "requetes_collecte": requetes_collecte,
             "depense_detail_csp": depense_detail_csp,
-            "depense_depense_total_par_csp": depense_total_par_csp,
+            "depense_total_par_csp": depense_total_par_csp,
             "depense_moyen_par_csp": depense_moyen_par_csp,
         },
     )
