@@ -3,6 +3,7 @@ from .models import (
     RequeteAnonymisees,
     RequeteCollecte,
     DataDepenseCsp,
+    DataDepenseTotalCsp,
     DataPanierCsp,
 )
 
@@ -59,6 +60,23 @@ class DataDepenseCspAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "csp_name_id",
+        "purchase_amount",
+    )
+    list_filter = (
+        "id",
+        "csp_name_id",
+        "purchase_amount",
+    )
+    search_fields = (
+        "id",
+        "csp_name_id",
+        "purchase_amount",
+    )
+
+ class DataDepenseTotalCsp(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "csp_name_id",
         "depense_csp",
     )
     list_filter = (
@@ -94,4 +112,5 @@ class DataPanierCspAdmin(admin.ModelAdmin):
 admin.site.register(RequeteCollecte, RequeteCollecteAdmin)
 admin.site.register(RequeteAnonymisees, RequeteAnonymiseesAdmin)
 admin.site.register(DataDepenseCsp, DataDepenseCspAdmin)
+admin.site.register(DataDepenseTotalCsp, DataDepenseTotalCspAdmin)
 admin.site.register(DataPanierCsp, DataPanierCspAdmin)
