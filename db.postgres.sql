@@ -5,7 +5,7 @@
 -- Dumped from database version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
 
--- Started on 2023-05-25 15:39:02 CEST
+-- Started on 2023-05-25 16:02:33 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1501,7 +1501,7 @@ ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
--- Completed on 2023-05-25 15:39:02 CEST
+-- Completed on 2023-05-25 16:02:33 CEST
 
 --
 -- PostgreSQL database dump complete
