@@ -15,7 +15,7 @@ def visualisation(request):
     requetes_anonymisees = RequeteAnonymisees.objects.all()
     requetes_collecte = RequeteCollecte.objects.all()
     depense_detail_csp = DataDepenseCsp.objects.all()
-    depense_depense_total_par_csp = DataDepenseTotalCsp.objects.all()
+    depense_total_par_csp = DataDepenseTotalCsp.objects.all()
     depense_moyen_par_csp = DataPanierMoyenCsp.objects.all()
 
     return render(
