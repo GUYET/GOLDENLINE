@@ -19,7 +19,7 @@ def login_view(request):
         if user is not None:
             # Authentification réussie, connectez l'utilisateur
             login(request, user)
-            return redirect('accueil')  # Redirigez vers la page d'accueil ou une autre page
+            return redirect('visualisation')  # Redirigez vers la page d'accueil ou une autre page
         else:
             # Authentification échouée, affichez un message d'erreur
             error_message = "Nom d'utilisateur ou mot de passe incorrect."
