@@ -113,10 +113,10 @@
         </tr>
       </thead>
       <tbody>
-        {% for requete in depense_panier_csp %}
+        {% for depense in depense_total_par_csp %}
         <tr>
-          <td>{{ requete.csp_name_id }}</td>
-          <td>{{ requete.panier_csp }}</td>
+          <td>{{ depense.csp_name_id }}</td>
+          <td>{{ depense.depense_csp }}</td>
         </tr>
         {% endfor %}
       </tbody>
@@ -140,10 +140,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [{{ requete.csp_name_id }}],
+      labels: [{{ epense.csp_name_id }}],
       datasets: [{
         label: 'Dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [1{{ requete.panier }}],
+        data: [1{{ depense.depense_csp}}],
         borderWidth: 1
       }]
     },
