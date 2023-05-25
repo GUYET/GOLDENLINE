@@ -56,15 +56,15 @@ class DataDepenseCsp(models.Model):
         db_table = "depense_categorie_csp"
 
 #Création de la table DataPanierMoyenCsp
-class DataPanierMoyenCsp(models.Model):
+class DataPanierCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
         db_collation="C", blank=True, null=True
     )  # This field type is a guess.
-    panier_moyen = models.TextField(
+    panier_csp = models.TextField(
         db_collation="C", blank=True, null=True
     )  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = "depense_panier_moyen_csp"
+        db_table = "depense_panier_csp"
