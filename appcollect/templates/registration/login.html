@@ -7,14 +7,13 @@
 {% endif %}
 
 {% if next %}
-    {% if user.is_authenticated %}
-    <p>Votre compte n'a pas accès à cette page. Pour continuer,
-    veuillez vous connecter avec un compte qui a accès.</p>
-    {% else %}
-    <p>Veuillez vous connecter pour voir cette page.</p>
-    {% endif %}
+{% if user.is_authenticated %}
+<p>Votre compte n'a pas accès à cette page. Pour continuer,
+veuillez vous connecter avec un compte qui a accès.</p>
+{% else %}
+<p>Veuillez vous connecter pour voir cette page.</p>
 {% endif %}
-
+{% endif %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 <table>
@@ -27,8 +26,7 @@
     <td>{{ form.password }}</td>
 </tr>
 </table>
-
-<input type="submit" value="login">
+<input type="submit" value="Se connecter">
 <input type="hidden" name="next" value="{{ next }}">
 </form>
 
