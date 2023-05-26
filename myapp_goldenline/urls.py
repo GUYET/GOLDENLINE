@@ -25,6 +25,5 @@ urlpatterns = [
     path("health/", views.health),
     path("admin/", admin.site.urls),
     path("login/", login_user, name="login"),
-    path("accounts/", include("django.contrib.auth.urls")),
     path("appcollect/", include("appcollect.urls")),
 ]
