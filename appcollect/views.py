@@ -12,7 +12,7 @@ from .models import (
 
 
 #Création des views
-@login_required
+
 def visualisation(request):
     requetes_anonymisees = RequeteAnonymisees.objects.all()
     requetes_collecte = RequeteCollecte.objects.all()
