@@ -19,7 +19,7 @@ Exporter des données de la table collecte.
 Fichiers de l'application web : appcollect
 
 Connexion démo : 
-https://goldenline-project.herokuapp.com/accounts/login/?next=/appcollect/visualisation/
+https://goldenline-project.herokuapp.com/appcollect/visualisation/
 
 Nom d’utilisateur : demo
 
