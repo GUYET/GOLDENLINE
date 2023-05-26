@@ -16,7 +16,6 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -64,7 +63,7 @@ ROOT_URLCONF = "myapp_goldenline.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,23 +84,23 @@ WSGI_APPLICATION = "myapp_goldenline.wsgi.application"
 
 if DEBUG:
     DATABASES = {
-    "test": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "mydatabase",
+        "test": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "mydatabase",
+        }
     }
-}
 
 else:
     DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "appcollect",
-        "USER": "postgres",
-        "PASSWORD": "($*lsfLxhBuqLp$",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "appcollect",
+            "USER": "postgres",
+            "PASSWORD": "($*lsfLxhBuqLp$",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+        }
     }
-}
 
 
 DATABASE_URL = os.environ["DATABASE_URL"]
@@ -149,6 +148,3 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-LOGIN_REDIRECT_URL = ""
-LOGOUT_REDIRECT_URL = ""

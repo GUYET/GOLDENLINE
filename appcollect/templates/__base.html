@@ -38,9 +38,9 @@
    {%endblock content%} 
    <div class="container">
         {% if user.is_authenticated %}
-            <p>Bonjour {{user.username}} - <a href="{% url 'logout' %}">Logout</a></p>
+            <p>Bonjour {{user.username}} - <a href="{% url 'logout' %}">Déconnexion</a></p>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'login' %}">Connexion</a>
         {% endif %}
         {% if messages %}
             <ul class="messages">

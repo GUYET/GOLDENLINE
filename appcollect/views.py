@@ -11,24 +11,27 @@ from .models import (
 )
 
 
-#Création des views
+# Création des views
 def login_user(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
         user = authenticate(request, username=username, password=password)
-        
+
         if user:
             # Authentification réussie, connectez l'utilisateur
             login(request, user)
-            return redirect('')  # Redirigez vers la page d'accueil ou une autre page
+            return redirect("")  # Redirigez vers la page d'accueil ou une autre page
         else:
             # Authentification échouée, affichez un message d'erreur
             error_message = "Nom d'utilisateur ou mot de passe incorrect."
-            return render(request, 'login.html', {'error_message': error_message})
-    
-    return render(request, 'login.html')
+            return render(
+                request, "accounts/login.html", {"error_message": error_message}
+            )
+
+    return render(request, "accounts/login.html")
+
 
 def visualisation(request):
     requetes_anonymisees = RequeteAnonymisees.objects.all()
@@ -49,6 +52,7 @@ def visualisation(request):
         },
     )
 
+
 @login_required
 class DataDepenseCspChartView(TemplateView):
     template_name = "visualisation.html"
@@ -57,7 +61,3 @@ class DataDepenseCspChartView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["datas"] = DataPanierMoyenCsp.objects.all()
         return context
-
-
-    
-    
