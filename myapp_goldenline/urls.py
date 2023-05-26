@@ -23,6 +23,5 @@ urlpatterns = [
     path("", RedirectView.as_view(url="appcollect/visualisation")),
     path("health/", views.health),
     path("admin/", admin.site.urls),
-    path("login/", include("appcollect.urls")),
     path("appcollect/", include("appcollect.urls")),
 ]
