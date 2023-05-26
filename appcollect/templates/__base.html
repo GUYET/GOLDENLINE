@@ -40,7 +40,7 @@
         {% if user.is_authenticated %}
             <p>Bonjour {{user.username}} - <a href="{% url 'logout' %}">Déconnexion</a></p>
         {% else %}
-            <a href="{% url 'login.html' %}">Connexion</a>
+            <a href="{% url 'accounts/login' %}">Connexion</a>
         {% endif %}
       
            </div>
