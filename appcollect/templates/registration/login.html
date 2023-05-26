@@ -3,15 +3,16 @@
 {% block content %}
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<div class="container">
+<p>Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>Votre compte n'a pas accès à cette page. 
+        Veuillez vous connecter avec un compte qui y a accès.</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>Veuillez vous connecter pour voir cette page.</p>
     {% endif %}
 {% endif %}
 
@@ -33,6 +34,6 @@
 </form>
 
 {# Assumes you set up the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'password_reset' %}">Mot de passe perdu?</a></p>
 
 {% endblock %}
