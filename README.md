@@ -8,13 +8,13 @@ L’entreprise GoldenLine dispose d’une application interne qui permet de stoc
 
 Cette solution web permet à l’équipe marketing GoldenLine de :
 
-Visualiser les données anonymisées.
+- Visualiser les données anonymisées.
 
-Afficher sous forme de graphique les dépenses par catégorie en fonction de la catégorie socioprofessionnelle.
+- Afficher sous forme de graphique les dépenses par catégorie en fonction de la catégorie socioprofessionnelle.
 
-Afficher sous forme de graphique la dépense du panier moyen en fonction de la catégorie socioprofessionnelle.
+- Afficher sous forme de graphique la dépense du panier moyen en fonction de la catégorie socioprofessionnelle.
 
-Exporter des données de la table collecte.
+- Exporter des données de la table collecte.
 
 Fichiers de l'application web : appcollect
 
