@@ -12,20 +12,9 @@ from .models import (
 
 
 # Création des views
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-
-        user = authenticate(request, username=username, password=password)
-        if user:
-            # Authentification réussie, connectez l'utilisateur
-            login(request, user)
-            return redirect("")  # Redirigez vers la page d'accueil
-
-    return render(request, "accounts/login.html")
 
 
+@login_required
 def visualisation(request):
     requetes_anonymisees = RequeteAnonymisees.objects.all()
     requetes_collecte = RequeteCollecte.objects.all()
