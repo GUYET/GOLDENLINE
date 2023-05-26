@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from .models import (
@@ -18,17 +18,10 @@ def login_user(request):
         password = request.POST["password"]
 
         user = authenticate(request, username=username, password=password)
-
         if user:
             # Authentification réussie, connectez l'utilisateur
             login(request, user)
-            return redirect("")  # Redirigez vers la page d'accueil ou une autre page
-        else:
-            # Authentification échouée, affichez un message d'erreur
-            error_message = "Nom d'utilisateur ou mot de passe incorrect."
-            return render(
-                request, "accounts/login.html", {"error_message": error_message}
-            )
+            return redirect("")  # Redirigez vers la page d'accueil
 
     return render(request, "accounts/login.html")
 

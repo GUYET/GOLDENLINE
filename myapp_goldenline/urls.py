@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
+from accounts.views import login_user
 from . import views
 
 urlpatterns = [
     path("", RedirectView.as_view(url="appcollect/visualisation")),
     path("health/", views.health),
     path("admin/", admin.site.urls),
+    path("login/", login_user, name="login"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("appcollect/", include("appcollect.urls")),
-       
-   ]
+]
