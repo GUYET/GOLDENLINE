@@ -16,19 +16,19 @@
       ]
     });
 
-  $('#export-button').on('click', function() {
-    var numLignes = parseInt($('#export-lignes').val());
+    $('#export-button').on('click', function() {
+      var numLignes = parseInt($('#export-lignes').val());
 
-    // Exporter les lignes
+      // Exporter les lignes
       table.button(0).trigger();
 
-    // Masquer les lignes supplémentaires après l'export
+      // Masquer les lignes supplémentaires après l'export
       table.rows().every(function(rowIdx, tableLoop, rowLoop) {
-      if (rowLoop >= numLignes) {
-        $(this.node()).hide();
-      }
+        if (rowLoop >= numLignes) {
+          $(this.node()).hide();
+        }
+      });
     });
-  });
   });
 </script>
 
@@ -74,17 +74,16 @@
 
  <!-- Création Tableau - Données Collecte-->
 <div class="container">
-   <h2>Tableau - Données Collecte</h2>
+  <h2>Tableau - Données Collecte</h2>
 </div>
-<div class="container">
+<div class="container export-table">
   <label for="export-lignes">Nombre de lignes à exporter :</label>
   <input type="number" id="export-lignes" min="1" step="1" value="1">
   <button id="export-button">Exporter</button>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
-    <table id="table-donnees-collecte" class="table table-striped">
-      <thead>
+    <table id="table-donnees-collecte" class="table table-striped">      <thead>
         <tr>
           <th>Collect ID</th>
           <th>Montant achat en euros</th>
