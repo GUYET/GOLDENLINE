@@ -1,5 +1,6 @@
 {% extends '__base.html' %}
 
+
 {% block scripts %}
 <script>
   $(document).ready(function() {
@@ -15,18 +16,26 @@
       ]
     });
 
-    // Mettre en évidence la sélection d'une ligne
-    $('#table-donnees-collecte tbody').on('click', 'tr', function() {
-      $(this).toggleClass('selected');
+    $('#export-button').on('click', function() {
+      var numLignes = parseInt($('#export-lignes').val());
+
+      // Exporter les lignes
+      table.button(0).trigger();
+
+      // Masquer les lignes supplémentaires après l'export
+      table.rows().every(function(rowIdx, tableLoop, rowLoop) {
+        if (rowLoop >= numLignes) {
+          $(this.node()).hide();
+        }
+      });
     });
 
-    // Mettre à jour les boutons d'exportation pendant la sélection
+    // Mettre en évidence la sélection d'une ligne
     table.on('select deselect', function() {
       var selectedRows = table.rows({ selected: true }).count();
-      table.button(0).enable(selectedRows > 0); // csvHtml5
+      table.button(0).enable(selectedRows > 0); // csvHtml5 
     });
   });
-
 </script>
 
 <style>
@@ -77,6 +86,11 @@
  <!-- Création Tableau - Données Collecte-->
 <div class="container">
    <h2>Tableau - Données Collecte</h2>
+</div>
+<div class="container">
+  <label for="export-lignes">Nombre de lignes à exporter :</label>
+  <input type="number" id="export-lignes" min="1" step="1" value="1">
+  <button id="export-button">Exporter</button>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
