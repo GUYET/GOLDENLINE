@@ -6,7 +6,7 @@ L’entreprise GoldenLine est spécialisée dans les vêtements de grande surfac
 
 L’entreprise GoldenLine dispose d’une application interne qui permet de stocker les données en brutes relatives aux achats de ses clients. 
 
-Cette solution web permet à l’équipe marketing GoldenLine de :
+Cette solution web  "appcollect" permet à l’équipe marketing GoldenLine de :
 
 - Visualiser les données anonymisées.
 
