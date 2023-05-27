@@ -16,33 +16,22 @@
       ]
     });
 
-    $('#export-button').on('click', function() {
-      var numLignes = parseInt($('#export-lignes').val());
+  $('#export-button').on('click', function() {
+    var numLignes = parseInt($('#export-lignes').val());
 
-      // Exporter les lignes
+    // Exporter les lignes
       table.button(0).trigger();
 
-      // Masquer les lignes supplémentaires après l'export
+    // Masquer les lignes supplémentaires après l'export
       table.rows().every(function(rowIdx, tableLoop, rowLoop) {
-        if (rowLoop >= numLignes) {
-          $(this.node()).hide();
-        }
-      });
+      if (rowLoop >= numLignes) {
+        $(this.node()).hide();
+      }
     });
-
-    // Mettre en évidence la sélection d'une ligne
-    table.on('select deselect', function() {
-      var selectedRows = table.rows({ selected: true }).count();
-      table.button(0).enable(selectedRows > 0); // csvHtml5 
-    });
+  });
   });
 </script>
 
-<style>
-  .selected {
-    background-color: #b0bed9 !important; /* Couleur mise évidence */
-  }
-</style>
 
 {% endblock scripts %}
 
