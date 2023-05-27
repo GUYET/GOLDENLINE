@@ -3,9 +3,27 @@
 {% block scripts %}
 <script>
   $(document).ready(function() {
-    $('#table-donnees-collecte').DataTable({
+    var table = $('#table-donnees-collecte').DataTable({
       dom: 'Bfrtip',
-      buttons: ['csvHtml5', 'excelHtml5', 'pdfHtml5']
+      buttons: [
+        {
+          extend: 'csvHtml5',
+          exportOptions: {
+            rows: { selected: true }
+          }
+        }
+      ]
+    });
+
+    // Mettre en évidence la sélection d'une ligne
+    $('#table-donnees-collecte tbody').on('click', 'tr', function() {
+      $(this).toggleClass('selected');
+    });
+
+    // Mettre à jour les boutons d'exportation pendant la éelection
+    table.on('select deselect', function() {
+      var selectedRows = table.rows({ selected: true }).count();
+      table.button(0).enable(selectedRows > 0); // csvHtml5
     });
   });
 </script>
