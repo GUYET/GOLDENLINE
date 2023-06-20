@@ -5,7 +5,7 @@
 -- Dumped from database version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
 
--- Started on 2023-05-25 16:09:10 CEST
+-- Started on 2023-06-20 18:51:21 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -680,8 +680,8 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-2	pbkdf2_sha256$600000$OpBKPtaDUlteleUdRxgrVg$458yZ1pUPl02NFeVp49DduB9UWG4Bsri5VxzEuWRyfQ=	2023-05-22 13:32:06.757696+02	f	demo				f	t	2023-05-22 13:01:43+02
-1	pbkdf2_sha256$600000$QGX9fepFkoa94qfpV3EMi3$7j2A78W95ldp6N/TEESWVlmjvpF+JrseiAR1vpa4/F8=	2023-05-22 18:25:06.751165+02	t	administrateur	Khaty	GUYET	k.guyet@gmail.com	t	t	2023-05-20 11:37:17+02
+1	pbkdf2_sha256$600000$QGX9fepFkoa94qfpV3EMi3$7j2A78W95ldp6N/TEESWVlmjvpF+JrseiAR1vpa4/F8=	2023-06-06 08:17:56.744429+02	t	administrateur	Khaty	GUYET	k.guyet@gmail.com	t	t	2023-05-20 11:37:17+02
+2	pbkdf2_sha256$600000$OpBKPtaDUlteleUdRxgrVg$458yZ1pUPl02NFeVp49DduB9UWG4Bsri5VxzEuWRyfQ=	2023-06-20 18:16:22.360865+02	f	demo				f	t	2023-05-22 13:01:43+02
 \.
 
 
@@ -939,6 +939,8 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 q71o4oncb86o2h9kw5sqvzlauh2tnwlu	e30:1q12ps:AHRQE3n7ZDzpR6IGZZixHb5vffukyk1tkSTeeQftn_s	2023-06-05 12:32:16.564703+02
 lpr3wqgo4435tbvdr5butccdi5ybs48q	.eJxVjDsOwyAQBe9CHSGWxXxSpvcZELAQnERYMnYV5e4RkoukfTPz3syHY6_-6HnzC7ErA3b53WJIz9wGoEdo95Wnte3bEvlQ-Ek7n1fKr9vp_h3U0OuodREBrHEARhUZHbmoYtBQjEQlyWosGY3QyQFNKAoSJItyUq4YYTL7fAHO6zce:1q18LK:Qfw_Cwh42sh3Old-sKmk7sTf6ZQy-H1i7YN5OQGmNoA	2023-06-05 18:25:06.755351+02
+joeghmw33p2x9udxi4p9d44xedhurwye	.eJxVjDsOwyAQBe9CHSGWxXxSpvcZELAQnERYMnYV5e4RkoukfTPz3syHY6_-6HnzC7ErA3b53WJIz9wGoEdo95Wnte3bEvlQ-Ek7n1fKr9vp_h3U0OuodREBrHEARhUZHbmoYtBQjEQlyWosGY3QyQFNKAoSJItyUq4YYTL7fAHO6zce:1q6Q0y:hCN8Au3YoXb9zuhcx4uaCEch0YKopsv9TSB9yEmnny4	2023-06-20 08:17:56.749991+02
+k06znsg4g6w7zh3cre84qr52b8d6ww9k	.eJxVjMsOwiAUBf-FtSGUl8Wle7-B3AdI1UBS2pXx322TLnR7Zua8RYR1KXHtaY4Ti4vQ4vS7IdAz1R3wA-q9SWp1mSeUuyIP2uWtcXpdD_fvoEAvW43GK-0duAxqTIgAweazYx3UwOQ8KuY8hKQCaZ9pc6zKHsmY0TKhFZ8v9SY4hA:1qBe1m:gSdpk63jAfLWMFlBx3bbSzzBfEx0Sla39jltkJeJGKU	2023-07-04 18:16:22.363629+02
 \.
 
 
@@ -1501,7 +1503,7 @@ ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
--- Completed on 2023-05-25 16:09:10 CEST
+-- Completed on 2023-06-20 18:51:21 CEST
 
 --
 -- PostgreSQL database dump complete
