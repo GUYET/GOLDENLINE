@@ -1,6 +1,5 @@
 {% extends '__base.html' %}
 
-
 {% block scripts %}
 <script>
   $(document).ready(function() {
@@ -15,11 +14,8 @@
         }
       ]
     });
-
-   
+  });
 </script>
-
-
 {% endblock scripts %}
 
 {% block content %}
@@ -27,12 +23,11 @@
   <h1>Visualisation des statistiques GoldenLine</h1>
 </div>
 <div class="container">
- <!-- Création Tableau - Données Anonymisées-->
   <h2>Tableau - Données Anonymisées</h2>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
-        <table id="table-donnees-anonymisees" class="table table-striped">
+    <table id="table-donnees-anonymisees" class="table table-striped">
       <thead>
         <tr>
           <th>ID</th>
@@ -59,15 +54,13 @@
   </div>
 </div>
 
- <!-- Création Tableau - Données Collecte-->
 <div class="container">
   <h2>Tableau - Données Collecte</h2>
 </div>
-  
-
 <div class="container">
   <div class="d-flex justify-content-right">
-    <table id="table-donnees-collecte" class="table table-striped">      <thead>
+    <table id="table-donnees-collecte" class="table table-striped">
+      <thead>
         <tr>
           <th>Collect ID</th>
           <th>Montant achat en euros</th>
@@ -87,14 +80,12 @@
   </div>
 </div>
 
-  <!-- Création Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
-
-<div class="container">  
+<div class="container">
   <h2>Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
-   <div class="d-flex justify-content-right">
-         <table id="depense_detail_csp" class="table table-striped">
+  <div class="d-flex justify-content-right">
+    <table id="depense_detail_csp" class="table table-striped">
       <thead>
         <tr>
           <th>Catégorie socioprofessionnelle</th>
@@ -113,14 +104,12 @@
   </div>
 </div>
 
-  <!-- Création Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
-
 <div class="container">
   <h2>Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
-        <table id="depense_total_par_csp" class="table table-striped">
+    <table id="depense_total_par_csp" class="table table-striped">
       <thead>
         <tr>
           <th>Catégorie socioprofessionnelle</th>
@@ -139,89 +128,40 @@
   </div>
 </div>
 
-  
-  
- <!--Création Graphique - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
-
 <div class="container">  
   <div>
-  <canvas id="myChart"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['artisan', 'cadre', 'retraité', 'employé'],
-      datasets: [{
-        label: 'Total dépenses catégorie socioprofessionnelle',
-        data: [ 2055.00, 1700.00, 1310.00, 1985.00],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    <canvas id="myChart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['artisan', 'cadre', 'retraité', 'employé'],
+        datasets: [{
+          label: 'Total dépenses catégorie socioprofessionnelle',
+          data: [2055.00, 1700.00, 1310.00, 1985.00],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-</script>
-  
-<!--test Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle
-
-<div class="col-md-12">  
-  <div>
-  <canvas id="myChart2" width="400" height="250"></canvas>
+    });
+  </script>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-  const ctx2 = document.getElementById('myChart2');
-
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: [{% for depense in depense_total_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
-      datasets: [{
-        label: 'Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [{% for depense in depense_total_par_csp %}{{ depense.depense_csp }}, {% endfor %}],
-         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'           
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)' 
-          ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>-->
-
- <!-- Création Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
-  <div class="container">
+<div class="container">
   <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
 </div>
 <div class="container">
   <div class="d-flex justify-content-right">
-        <table id="depense_moyen_par_csp" class="table table-striped">
+    <table id="depense_moyen_par_csp" class="table table-striped">
       <thead>
         <tr>
           <th>Catégorie socioprofessionnelle</th>
@@ -240,77 +180,31 @@
   </div>
 </div>
 
-<!--Création Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
-
 <div class="container">  
   <div>
-  <canvas id="myChart2"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  const ctx2 = document.getElementById('myChart2');
-
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['artisan', 'cadre', 'retraité', 'employé'],
-      datasets: [{
-        label: 'Dépenses panier moyen catégorie socioprofessionnelle',
-        data: [ 60.44, 70.83, 59.55, 58.38],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    <canvas id="myChart2"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['artisan', 'cadre', 'retraité', 'employé'],
+        datasets: [{
+          label: 'Dépenses panier moyen catégorie socioprofessionnelle',
+          data: [60.44, 70.83, 59.55, 58.38],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-</script>
-<!--test Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle
-<div class="col-md-12">  
-  <div>
-  <canvas id="myChart4" width="400" height="250"></canvas>
+    });
+  </script>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  const ctx4 = document.getElementById('myChart4');
-
-  new Chart(ctx4, {
-    type: 'bar',
-    data: {
-      labels: [{% for depense in depense_moyen_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
-      datasets: [{
-        label: 'Total dépenses panier moyen en fonction de la catégorie socioprofessionnelle',
-        data: [{% for depense in depense_moyen_par_csp %}{{ depense.moyenne_arrondie }}, {% endfor %}],
-         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'           
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)' 
-          ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>-->
-
-
 {% endblock content %}
