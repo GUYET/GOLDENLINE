@@ -128,6 +128,8 @@
   </div>
 </div>
 
+<!--Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
+
 <div class="container">  
   <div>
     <canvas id="myChart"></canvas>
@@ -156,6 +158,49 @@
   </script>
 </div>
 
+<!--test Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle
+
+<div class="col-md-12">  
+  <div>
+  <canvas id="myChart2" width="400" height="250"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: [{% for depense in depense_total_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
+      datasets: [{
+        label: 'Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
+        data: [{% for depense in depense_total_par_csp %}{{ depense.depense_csp }}, {% endfor %}],
+         backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'           
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)' 
+          ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>-->
+
 <div class="container">
   <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
 </div>
@@ -179,7 +224,7 @@
     </table>
   </div>
 </div>
-
+<!--test Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle
 <div class="container">  
   <div>
     <canvas id="myChart2"></canvas>
@@ -207,4 +252,46 @@
     });
   </script>
 </div>
+<!--Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
+<div class="col-md-12">  
+  <div>
+  <canvas id="myChart4" width="400" height="250"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx4 = document.getElementById('myChart4');
+
+  new Chart(ctx4, {
+    type: 'bar',
+    data: {
+      labels: [{% for depense in depense_moyen_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
+      datasets: [{
+        label: 'Total dépenses panier moyen en fonction de la catégorie socioprofessionnelle',
+        data: [{% for depense in depense_moyen_par_csp %}{{ depense.moyenne_arrondie }}, {% endfor %}],
+         backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'           
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)' 
+          ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>-->
+
 {% endblock content %}
