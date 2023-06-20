@@ -20,146 +20,133 @@
 
 {% block content %}
 <div class="container">
-  <div class="row">
-  <h1>Visualisation des statistiques GoldenLine</h1>
-  </div>
-</div>
-<div class="container">
-  <h2>Tableau - Données Anonymisées</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-    <table id="table-donnees-anonymisees" class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre enfant</th>
-          <th>Catégorie socioprofessionnelle</th>
-          <th>Montant achat en euros</th>
-          <th>Date achat</th>
-          <th>Collect ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for requete in requetes_anonymisees %}
-        <tr>
-          <td>{{ requete.id }}</td>
-          <td>{{ requete.child_number }}</td>
-          <td>{{ requete.csp_name_id }}</td>
-          <td>{{ requete.purchase_amount }}</td>
-          <td>{{ requete.purchase_date }}</td>
-          <td>{{ requete.nb_collect_id }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+  <h1 class="text-center text-primary"> Visualisation des statistiques GoldenLine</h1>
+    <div class="row justify-content-md-center">
+      <div class="col-md-10 mt-5 mb-5">
+      <h5>Tableau - Données Anonymisées</h5>
+          <table id="table-donnees-anonymisees" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre enfant</th>
+                <th>Catégorie socioprofessionnelle</th>
+                <th>Montant achat en euros</th>
+                <th>Date achat</th>
+                <th>Collect ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for requete in requetes_anonymisees %}
+              <tr>
+                <td>{{ requete.id }}</td>
+                <td>{{ requete.child_number }}</td>
+                <td>{{ requete.csp_name_id }}</td>
+                <td>{{ requete.purchase_amount }}</td>
+                <td>{{ requete.purchase_date }}</td>
+                <td>{{ requete.nb_collect_id }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
 
-<div class="container">
-  <h2>Tableau - Données Collecte</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-    <table id="table-donnees-collecte" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Collect ID</th>
-          <th>Montant achat en euros</th>
-          <th>Catégorie produit</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for requete in requetes_collecte %}
-        <tr>
-          <td>{{ requete.nb_collect_id }}</td>
-          <td>{{ requete.purchase_amount }}</td>
-          <td>{{ requete.product_category_name_id }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-10 mb-5">
+          <h5>Tableau - Données Collecte</h5>
+          <table id="table-donnees-collecte" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+              <th>Collect ID</th>
+              <th>Montant achat en euros</th>
+              <th>Catégorie produit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for requete in requetes_collecte %}
+              <tr>
+              <td>{{ requete.nb_collect_id }}</td>
+              <td>{{ requete.purchase_amount }}</td>
+              <td>{{ requete.product_category_name_id }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<div class="container">
-  <h2>Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-    <table id="depense_detail_csp" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Catégorie socioprofessionnelle</th>
-          <th>Montant achat en euros</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for depense in depense_detail_csp %}
-        <tr>
-          <td>{{ depense.csp_name_id }}</td>
-          <td>{{ depense.purchase_amount }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-10 mb-5">
+        <h5>Tableau - Détail dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h5>
+          <table id="depense_detail_csp" class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Catégorie socioprofessionnelle</th>
+                  <th>Montant achat en euros</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for depense in depense_detail_csp %}
+                <tr>
+                  <td>{{ depense.csp_name_id }}</td>
+                  <td>{{ depense.purchase_amount }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+      </div>      
+    </div>
 
-<div class="container">
-  <h2>Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-    <table id="depense_total_par_csp" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Catégorie socioprofessionnelle</th>
-          <th>Montant total en euros</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for depense in depense_total_par_csp %}
-        <tr>
-          <td>{{ depense.csp_name_id }}</td>
-          <td>{{ depense.depense_csp }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-6 mb-5">
+      <h5>Tableau - Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle</h5>
+        <table id="depense_total_par_csp" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Catégorie socioprofessionnelle</th>
+              <th>Montant total en euros</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for depense in depense_total_par_csp %}
+            <tr>
+              <td>{{ depense.csp_name_id }}</td>
+              <td>{{ depense.depense_csp }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
 
 <!--Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle-->
 
-<div class="container">  
-  <div>
-    <canvas id="myChart"></canvas>
+    <div class="col-md-6 mb-5">
+      <canvas id="myChart"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          const ctx = document.getElementById('myChart');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['artisan', 'cadre', 'retraité', 'employé'],
+              datasets: [{
+                label: 'Total dépenses catégorie socioprofessionnelle',
+                data: [2055.00, 1700.00, 1310.00, 1985.00],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        </script>
+    </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('myChart');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['artisan', 'cadre', 'retraité', 'employé'],
-        datasets: [{
-          label: 'Total dépenses catégorie socioprofessionnelle',
-          data: [2055.00, 1700.00, 1310.00, 1985.00],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</div>
-
 <!--test Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle
 
 <div class="col-md-12">  
@@ -203,57 +190,54 @@
   });
 </script>-->
 
-<div class="container">
-  <h2>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h2>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-right">
-    <table id="depense_moyen_par_csp" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Catégorie socioprofessionnelle</th>
-          <th>Montant achat en euros</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for depense in depense_moyen_par_csp %}
-        <tr>
-          <td>{{ depense.csp_name_id }}</td>
-          <td>{{ depense.moyenne_arrondie }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-6 mb-5">
+      <h5>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h5>
+        <table id="depense_moyen_par_csp" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Catégorie socioprofessionnelle</th>
+              <th>Montant achat en euros</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for depense in depense_moyen_par_csp %}
+            <tr>
+              <td>{{ depense.csp_name_id }}</td>
+              <td>{{ depense.moyenne_arrondie }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
 <!--Graphique -Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
-<div class="container">  
-  <div>
-    <canvas id="myChart2"></canvas>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx2 = document.getElementById('myChart2');
-    new Chart(ctx2, {
-      type: 'bar',
-      data: {
-        labels: ['artisan', 'cadre', 'retraité', 'employé'],
-        datasets: [{
-          label: 'Dépenses panier moyen catégorie socioprofessionnelle',
-          data: [60.44, 70.83, 59.55, 58.38],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+    <div class="col-md-6 mb-5">
+      <canvas id="myChart2"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx2 = document.getElementById('myChart2');
+        new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: ['artisan', 'cadre', 'retraité', 'employé'],
+            datasets: [{
+              label: 'Dépenses panier moyen catégorie socioprofessionnelle',
+              data: [60.44, 70.83, 59.55, 58.38],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
           }
-        }
-      }
-    });
-  </script>
-</div>
+        });
+      </script>
+    </div>
+  </div>
 <!-- test Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle
 <div class="col-md-12">  
   <div>
@@ -295,5 +279,7 @@
     }
   });
 </script>-->
+
+</div>
 
 {% endblock content %}

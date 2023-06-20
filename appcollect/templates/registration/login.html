@@ -1,41 +1,45 @@
 {% extends "__base.html" %}
 
 {% block content %}
-<div class="container-md-center">
+<div class="container"> 
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 mt-5">
+            {% if form.errors %}
+            <p>Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer.</p>
+            {% endif %}
 
-{% if form.errors %}
-<p>Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer.</p>
-{% endif %}
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Votre compte n'a pas accès à cette page. 
+                    Veuillez vous connecter avec un compte qui y a accès.</p>
+                {% else %}
+                <p>Veuillez vous connecter pour voir cette page.</p>
+                {% endif %}
+            {% endif %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Votre compte n'a pas accès à cette page. 
-        Veuillez vous connecter avec un compte qui y a accès.</p>
-    {% else %}
-    <p>Veuillez vous connecter pour voir cette page.</p>
-    {% endif %}
-{% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-
-<div class="container-md-center">
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login">
-<input type="hidden" name="next" value="{{ next }}">
-</form>
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+        <h4 class="mb-3">Bienvenue sur l'application web GoldenLine</h4>
+                <table class="mb-4">
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                </table>
+                <input type="submit" class="btn btn-primary mb-5" value="login">
+                <input type="hidden" name="next" value="{{ next }}">
+            </div>
+    </form>
 
 {# Assumes you set up the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Mot de passe perdu?</a></p>
-
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+                <p><a href="{% url 'password_reset' %}">Mot de passe perdu?</a></p>
+        </div>
+    </div>
 {% endblock %}

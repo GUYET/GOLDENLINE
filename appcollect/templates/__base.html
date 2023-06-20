@@ -33,25 +33,26 @@
 
 <body>
     {%block scripts%}
-   {%endblock scripts%}
+   {%endblock scripts%}  
+
+   <div class="container"> 
+        <div class="row">
+            <div class="col-md-6">
+        {% if user.is_authenticated %}
+                <p>Bonjour {{user.username}} - <a href="{% url 'logout' %}">Déconnexion</a></p>
+                       {% endif %}
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     {%block content%}   
    {%endblock content%} 
-   <div class="container">
-     {% if user.is_authenticated %}
-            <p>Bonjour {{user.username}} - <a href="{% url 'logout' %}">Déconnexion</a></p>
-        {% else %}
-            <a href="{% url 'login' %}">Connexion</a>
-        {% endif %}
-        {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-            {% endif %}
-      
-           </div>
-
 </body>  
 
 </html>
