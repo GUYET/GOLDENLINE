@@ -34,12 +34,3 @@ def visualisation(request):
         },
     )
 
-
-@login_required
-class DataDepenseCspChartView(TemplateView):
-    template_name = "visualisation.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["datas"] = DataPanierMoyenCsp.objects.all()
-        return context
