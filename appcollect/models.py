@@ -8,17 +8,16 @@
 
 from django.db import models
 
-#Création de la table RequeteAnonymisees
+
+# Création de la table RequeteAnonymisees
 class RequeteAnonymisees(models.Model):
     id = models.AutoField(primary_key=True)
     id_customer = models.BigIntegerField()
     child_number = models.IntegerField(blank=True, null=True)
     csp_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-    purchase_amount = models.TextField(
-        blank=True, null=True
-    )  # This field type is a guess.
+        max_length="250", db_collation="C", blank=True, null=True
+    )
+    purchase_amount = models.DecimalField(decimal_places=2, max_digits=8)
     purchase_date = models.DateField(blank=True, null=True)
     nb_collect_id = models.BigIntegerField(blank=True, null=True)
 
@@ -26,59 +25,54 @@ class RequeteAnonymisees(models.Model):
         managed = False
         db_table = "requete_anonymisees"
 
-#Création de la table RequeteCollecte
+
+# Création de la table RequeteCollecte
 class RequeteCollecte(models.Model):
     id = models.AutoField(primary_key=True)
     nb_collect_id = models.BigIntegerField(blank=True, null=True)
-    purchase_amount = models.TextField(
-        blank=True, null=True
-    )  # This field type is a guess.
+    purchase_amount = models.DecimalField(decimal_places=2, max_digits=8)
     product_category_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
+        max_length="250", db_collation="C", blank=True, null=True
+    )
 
     class Meta:
         managed = False
         db_table = "requete_collecte"
 
-#Création de la table DataDepenseCsp
+
+# Création de la table DataDepenseCsp
 class DataDepenseCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-    purchase_amount = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
+        max_length="250", db_collation="C", blank=True, null=True
+    )
+    purchase_amount = models.DecimalField(decimal_places=2, max_digits=8)
 
     class Meta:
         managed = False
         db_table = "depense_detail_csp"
 
-   
-#Création de la table DataDepenseTotalCsp
+
+# Création de la table DataDepenseTotalCsp
 class DataDepenseTotalCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-    depense_csp = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
+        max_length="250", db_collation="C", blank=True, null=True
+    )
+    depense_csp = models.DecimalField(decimal_places=2, max_digits=8)
 
     class Meta:
         managed = False
         db_table = "depense_total_par_csp"
-        
-#Création de la table DataPanierMoyenCsp
+
+
+# Création de la table DataPanierMoyenCsp
 class DataPanierMoyenCsp(models.Model):
     id = models.AutoField(primary_key=True)
     csp_name_id = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
-    moyenne_arrondie = models.TextField(
-        db_collation="C", blank=True, null=True
-    )  # This field type is a guess.
+        max_length="250", db_collation="C", blank=True, null=True
+    )
+    moyenne_arrondie = models.DecimalField(decimal_places=2, max_digits=8)
 
     class Meta:
         managed = False
