@@ -129,10 +129,22 @@
           new Chart(ctx, {
             type: 'bar',
             data: {
-              labels: ['artisan', 'cadre', 'retraité', 'employé'],
+              labels: [{% for depense in depense_total_par_csp %} '{{ depense.csp_name_id }}' , {% endfor %}],
               datasets: [{
                 label: 'Total dépenses catégorie socioprofessionnelle',
-                data: [2055.00, 1700.00, 1310.00, 1985.00],
+                data: [{% for depense in depense_total_par_csp %} {{ depense.depense_csp|floatformat:"0" }}, {% endfor %}] ,
+                 backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)'          
+                ],
+                borderColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)'
+                ],
                 borderWidth: 1
               }]
             },
@@ -146,50 +158,8 @@
           });
         </script>
     </div>
-  </div>
-<!--test Graphique -Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle
-
-<div class="col-md-12">  
-  <div>
-  <canvas id="myChart2" width="400" height="250"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  const ctx2 = document.getElementById('myChart2');
-
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: [{% for depense in depense_total_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
-      datasets: [{
-        label: 'Total dépenses par catégorie en fonction de la catégorie socioprofessionnelle',
-        data: [{% for depense in depense_total_par_csp %}{{ depense.depense_csp }}, {% endfor %}],
-         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'           
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)' 
-          ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>-->
-
+  
+<!--Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle-->
   <div class="row justify-content-md-center">
     <div class="col-md-6 mb-5">
       <h5>Tableau - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle</h5>
@@ -222,8 +192,20 @@
           data: {
             labels: ['artisan', 'cadre', 'retraité', 'employé'],
             datasets: [{
-              label: 'Dépenses panier moyen catégorie socioprofessionnelle',
-              data: [60.44, 70.83, 59.55, 58.38],
+              label: 'Dépenses panier moyen en fonction de la catégorie socioprofessionnelle',
+              data: [{% for depense in depense_moyen_par_csp %} {{ depense.moyenne_arrondie|floatformat:"0" }} ,  {% endfor %}] ,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)'          
+                ],
+                borderColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)'
+                ],
               borderWidth: 1
             }]
           },
@@ -238,48 +220,7 @@
       </script>
     </div>
   </div>
-<!-- test Graphique - Dépenses panier moyen en fonction de la catégorie socioprofessionnelle
-<div class="col-md-12">  
-  <div>
-  <canvas id="myChart4" width="400" height="250"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-  const ctx4 = document.getElementById('myChart4');
 
-  new Chart(ctx4, {
-    type: 'bar',
-    data: {
-      labels: [{% for depense in depense_moyen_par_csp %}'{{ depense.csp_name_id }}', {% endfor %}],
-      datasets: [{
-        label: 'Total dépenses panier moyen en fonction de la catégorie socioprofessionnelle',
-        data: [{% for depense in depense_moyen_par_csp %}{{ depense.moyenne_arrondie }}, {% endfor %}],
-         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'           
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)' 
-          ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>-->
-
-</div>
 
 {% endblock content %}
