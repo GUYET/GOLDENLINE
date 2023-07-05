@@ -132,7 +132,7 @@
               labels: [{% for depense in depense_total_par_csp %} '{{ depense.csp_name_id }}' , {% endfor %}],
               datasets: [{
                 label: 'Total dépenses catégorie socioprofessionnelle',
-                data: [{% for depense in depense_total_par_csp %} {{ depense.depense_csp|floatformat:"0" }}, {% endfor %}] ,
+                data: [{% for depense in depense_total_par_csp %} {{ depense.depense_csp|safe }}, {% endfor %}] ,
                  backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -221,44 +221,5 @@
     </div>
   </div>
 
-
-<div class="col-md-12">  
-    <canvas id="myChart4" width="400" height="250"></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script>
-        const ctx4 = document.getElementById('myChart4');
-        new Chart(ctx4, {
-          type: 'bar',
-          data: {
-            labels: [{% for depense in depense_moyen_par_csp %} '{{ depense.csp_name_id }}' , {% endfor %}],
-            datasets: [{
-              label: 'Dépenses panier moyen en fonction de la catégorie socioprofessionnelle',
-              data: [{% for depense in depense_moyen_par_csp %} {{ depense.moyenne_arrondie|safe }} ,  {% endfor %}] ,
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)'          
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)'
-                ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-                
-              }
-            }
-          }
-        });
-      </script>
-    </div>
 
 {% endblock content %}
